@@ -9,7 +9,7 @@
                 </h1>
                 
                 <div class="has-text-centered">
-                    <a class="button is-outlined is-primary w-100-mobile" href=""><strong>Start Building Your Stack</strong></a>
+                    <a class="button is-outlined is-primary w-100-mobile" href="{{ action('SignupController@signupForm') }}"><strong>Start Building Your Stack</strong></a>
                     &nbsp;
                     &nbsp;
                     <a class="button is-outlined is-info w-100-mobile" href=""><strong>Browse Stacks</strong></a>
