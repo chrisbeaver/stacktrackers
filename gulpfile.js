@@ -1,6 +1,9 @@
 const elixir = require('laravel-elixir');
 
+require('laravel-elixir-browserify-official');
 require('laravel-elixir-vue-2');
+// require('laravel-elixir-vueify-2.0');
+// require('laravel-elixir-vueify');
 
 /*
  |--------------------------------------------------------------------------

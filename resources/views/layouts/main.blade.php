@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
         <link href="/css/animate.css" rel="stylesheet">
         <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
-        <script src="{{ elixir('js/app.js') }}"></script>
+        
         
         @yield('header-assets')
     </head>
@@ -22,6 +22,8 @@
             @yield('main-content')
         
         @include('partials.footer')
+        
+        <script src="{{ elixir('js/app.js') }}"></script>
         @yield('footer-assets')
     </body>
 </html>

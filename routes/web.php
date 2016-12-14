@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// New User Registration
+Route::get('signup', 'SignupController@signupForm');
+Route::post('signup', 'SignupController@registerUser');

@@ -16,7 +16,8 @@ window.$ = window.jQuery = require('jquery');
  * and simple, leaving you to focus on building your next great project.
  */
 
-window.Vue = require('vue');
+// window.Vue = require('vue'); SWITCHED TO NEXT LINE TO USE VUEIFY
+window.Vue = require('vue/dist/vue.js');
 require('vue-resource');
 
 /**
