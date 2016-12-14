@@ -9,10 +9,10 @@
                 </h1>
                 
                 <div class="has-text-centered">
-                    <a class="button is-outlined is-primary" href=""><strong>Start Building Your Stack</strong></a>
+                    <a class="button is-outlined is-primary w-100-mobile" href=""><strong>Start Building Your Stack</strong></a>
                     &nbsp;
                     &nbsp;
-                    <a class="button is-outlined is-info" href=""><strong>Browse Stacks</strong></a>
+                    <a class="button is-outlined is-info w-100-mobile" href=""><strong>Browse Stacks</strong></a>
                 </div>
             </div>
         </div>

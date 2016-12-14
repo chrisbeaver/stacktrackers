@@ -25,3 +25,8 @@ footer {
     padding-bottom: 40px;
     border-top: 1px solid #fff;
 }
+
+@media screen and (max-width:768px) {
+    .w-100-mobile { width:100% }
+    .has-text-centered-mobile{ text-align:center }
+}
