@@ -18,4 +18,14 @@ Route::group(['middleware' => 'guest'], function () {
     Route::post('login','AuthController@login');
 });
 
+// Require Authentication for Holdings
+Route::group(['prefix' => 'holdings', 'middleware' => 'auth'], function () {
+
+    Route::get('/', 'HoldingController@showMyHoldings');
+    
+    Route::get('create', 'HoldingController@showNewForm');
+    Route::post('create', 'HoldingController@store');
+
+});
+
 

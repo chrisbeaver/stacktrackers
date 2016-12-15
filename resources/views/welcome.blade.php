@@ -7,12 +7,13 @@
                 <h1 class="title rubberBand animated has-text-centered" style="font-size: 48px; color: #4D545D;">
                     The <strong>easiest</strong> way to track your stack!
                 </h1>
+                <h2 class="title pulse animated has-text-centered">Just fucking do it!</h2>
                 
                 <div class="has-text-centered">
-                    <a class="button is-outlined is-primary w-100-mobile" href="{{ action('SignupController@signupForm') }}"><strong>Start Building Your Stack</strong></a>
+                    <a class="button is-outlined is-primary is-large w-100-mobile" href="{{ action('SignupController@signupForm') }}"><strong>Start Building Your Stack</strong></a>
                     &nbsp;
                     &nbsp;
-                    <a class="button is-outlined is-info w-100-mobile" href=""><strong>Browse Stacks</strong></a>
+                    <a class="button is-outlined is-info is-large w-100-mobile" href=""><strong>Browse Stacks</strong></a>
                 </div>
             </div>
         </div>

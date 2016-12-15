@@ -21,6 +21,7 @@
   "dependencies": {
     "bulma": "^0.2.3",
     "datatables.net": "^1.10.12",
-    "dropzone": "^4.3.0"
+    "dropzone": "^4.3.0",
+    "wowjs": "^1.1.3"
   }
 }

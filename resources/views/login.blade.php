@@ -30,7 +30,7 @@
         </div>
         <div class="card is-fullwidth">
             <div class="card-content">
-                Don't have an account? <a href="{{ action('SignupController@index') }}">Create a free</a> one today!
+                Don't have an account? <a href="{{ action('SignupController@signupForm') }}">Create a free</a> one today!
             </div>
         </div>
     </div>

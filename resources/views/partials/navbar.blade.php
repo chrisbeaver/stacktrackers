@@ -41,7 +41,7 @@
                         </span>
                     </a>
                 @else
-                    <a class="button is-primary" href="">
+                    <a class="button is-primary" href="{{ action('AuthController@loginForm') }}">
                         <span>Login</span>
                         <span class="icon">
                             <i class="fa fa-sign-in"></i>
