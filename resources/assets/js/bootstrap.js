@@ -20,7 +20,6 @@ window.$ = window.jQuery = require('jquery');
 window.Vue = require('vue/dist/vue.js');
 require('vue-resource');
 
-require('wowjs/dist/wow.js');
 /**
  * We'll register a HTTP interceptor to attach the "CSRF" header to each of
  * the outgoing requests issued by this application. The CSRF middleware

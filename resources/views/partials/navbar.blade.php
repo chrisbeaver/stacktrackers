@@ -1,7 +1,7 @@
 <nav class="nav has-shadow">
     <div class="container">
         <div class="nav-left">
-            <a class="nav-item is-brand is-tab" href="#">
+            <a class="nav-item is-brand" href="#">
               <img src="/images/navbar_logo.png" alt="Bulma logo">
             </a>
         </div>

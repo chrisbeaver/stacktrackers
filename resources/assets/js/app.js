@@ -7,6 +7,15 @@
 
 require('./bootstrap');
 
+jQuery(function() {
+    let $toggle = $('#nav-toggle');
+    let $menu = $('#nav-menu');
+
+    $toggle.click(function() {
+        $(this).toggleClass('-is-active');
+        $menu.toggleClass('is-active');
+    });
+});
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
