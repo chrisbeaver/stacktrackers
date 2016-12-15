@@ -12,7 +12,7 @@ jQuery(function() {
     let $menu = $('#nav-menu');
 
     $toggle.click(function() {
-        $(this).toggleClass('-is-active');
+        $(this).toggleClass('is-active');
         $menu.toggleClass('is-active');
     });
 });
@@ -22,8 +22,8 @@ jQuery(function() {
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+Vue.component('holdings', require('./components/Holdings.vue'));
 
 const app = new Vue({
-    el: '#root'
+    el: '.content'
 });
