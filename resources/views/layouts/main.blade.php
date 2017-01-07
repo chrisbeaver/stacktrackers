@@ -18,7 +18,12 @@
     </head>
     <body>
         @include('partials.navbar')
-        
+            @if(session()->has('message'))
+                <div class="notification is-warning">
+                    <button class="delete"></button>
+                    {{ session()->get('message') }}
+                </div>
+            @endif
             @yield('main-content')
         
         @include('partials.footer')

@@ -5,6 +5,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['middlewre' => 'auth'], function() {
+       Route::get('logout', 'AuthController@logout');
+   });
 
 Route::group(['middleware' => 'guest'], function () {
     
@@ -14,13 +17,12 @@ Route::group(['middleware' => 'guest'], function () {
 
     // Authentication
     Route::get('login', 'AuthController@loginForm');
-    Route::get('logout', 'AuthController@logout');
     Route::post('login','AuthController@login');
 });
 
 // Require Authentication for Holdings
 Route::group(['prefix' => 'holdings', 'middleware' => 'auth'], function () {
-
+ 
     Route::get('/', 'HoldingController@showMyHoldings');
     
     Route::get('create', 'HoldingController@showNewForm');
