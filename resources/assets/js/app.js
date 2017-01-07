@@ -23,7 +23,3 @@ jQuery(function() {
  */
 
 Vue.component('holdings', require('./components/Holdings.vue'));
-
-const app = new Vue({
-    el: '.content'
-});

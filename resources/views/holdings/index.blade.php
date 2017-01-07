@@ -9,4 +9,9 @@
 @endsection
 
 @section('footer-assets')
+<script>
+    const app = new Vue({
+    el: '.content'
+});
+</script>
 @endsection

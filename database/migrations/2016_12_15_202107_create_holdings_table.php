@@ -16,7 +16,7 @@ class CreateHoldingsTable extends Migration
         Schema::create('holdings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->char('name', 60);               // Fixed length name
+            $table->integer('piece_id')->unsigned();
             $table->float('weight', 6,4);           // single unit weight
             $table->enum('weight_unit', ['ounces', 'grams']);
             $table->integer('finess');              // .999 for fine etc...
