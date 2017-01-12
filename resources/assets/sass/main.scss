@@ -30,3 +30,40 @@ footer {
     .w-100-mobile { width:100% }
     .has-text-centered-mobile{ text-align:center }
 }
+
+// Nav Menus
+.menu {
+    display: flex;
+    .menu-item {
+        position: relative;
+        &:not(:first-child) {
+            margin-left: 20px;
+        }
+        a {
+            // display: block;
+            // padding: 36px 10px;
+            // font-size: 20px;
+            // font-weight: 600;
+            // text-transform: uppercase;
+            &:hover {
+                color: $yellow;
+            }
+        }
+        .dropdown {
+            visibility: hidden;
+            position: absolute;
+            top: 32px;
+            left: 0;
+            background-color: $dropdown-menu-background;
+            .menu-item {
+                margin: 0;
+                a {
+                    padding: 5px 10px;
+                }
+            }
+        }
+        &:hover .dropdown {
+            visibility: visible;
+        }
+    }
+}

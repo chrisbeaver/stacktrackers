@@ -31,15 +31,23 @@
                         </span>
                         <span>My Stack</span>
                     </a>
-                    <a class="button is-primary has-arrow" href="">
-                        <span class="icon">
-                            <i class="fa fa-user"></i>
-                        </span>
-                        <span>{{ auth()->user()->username }}</span>
-                        <span class="icon">
-                            <i class="fa fa-angle-down"></i>
-                        </span>
-                    </a>
+                    <ul class="menu">
+                        <li class="menu-item">
+                            <a class="button is-primary has-arrow" href="">
+                                <span class="icon">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                                <span>{{ auth()->user()->username }}</span>
+                                <span class="icon">
+                                    <i class="fa fa-angle-down"></i>
+                                </span>
+                            </a>
+                            <ul class="dropdown">
+                                <li class="menu-item"><a href="/profile">Profile</a></li>
+                                <li class="menu-item"><a href="/something-else">Something Else</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 @else
                     <a class="button is-primary" href="{{ action('AuthController@loginForm') }}">
                         <span>Login</span>

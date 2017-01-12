@@ -6283,4 +6283,41 @@ footer {
   }
 }
 
+.menu {
+  display: -webkit-box;
+  display: flex;
+}
+
+.menu .menu-item {
+  position: relative;
+}
+
+.menu .menu-item:not(:first-child) {
+  margin-left: 20px;
+}
+
+.menu .menu-item a:hover {
+  color: #ffdd57;
+}
+
+.menu .menu-item .dropdown {
+  visibility: hidden;
+  position: absolute;
+  top: 32px;
+  left: 0;
+  background-color: #fff;
+}
+
+.menu .menu-item .dropdown .menu-item {
+  margin: 0;
+}
+
+.menu .menu-item .dropdown .menu-item a {
+  padding: 5px 10px;
+}
+
+.menu .menu-item:hover .dropdown {
+  visibility: visible;
+}
+
 /*# sourceMappingURL=app.css.map */
