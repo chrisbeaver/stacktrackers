@@ -7,9 +7,9 @@
                 is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
             </p>
             <p>
-                <a class="icon" href="https://github.com/jgthms/bulma">
+                {{-- <a class="icon" href="https://github.com/jgthms/bulma">
                   <i class="fa fa-github"></i>
-                </a>
+                </a> --}}
             </p>
         </div>
     </div>

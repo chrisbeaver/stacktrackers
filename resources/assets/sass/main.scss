@@ -32,6 +32,12 @@ footer {
 }
 
 // Nav Menus
+#nav-menu {
+    font-size: 120%;
+    .button {
+        font-size: 90%;
+    }
+}
 .menu {
     display: flex;
     position: relative;
@@ -62,10 +68,12 @@ footer {
             visibility: hidden;
             position: absolute;
             top: 62px;
-            width: 140%;
-            padding: 6px;
+            width: 150%;
+            padding: 8px;
             right: 0;
             text-align: left;
+            // font-size: 120%;
+            font-weight: 400%;
             background-color: #fff;
             border: 1px solid $dropdown-border;
             &:before {
@@ -79,17 +87,20 @@ footer {
                     position: absolute;
                     -webkit-transform: rotate(-45deg);
                     transform: rotate(-45deg);
-                    width: 14px;
+                    width: 11px;
                     background: #fff;
                     top: -6px;
-                    right: 22px;
+                    right: 23px;
             }
             .menu-item {
                 margin: 0;
                 padding: .5em 0;
-                a {
-                    
+                a { 
+                    padding-left: 4px;
                 }
+                &:hover {
+                    color: $primary;
+                } 
             }
             .spacer {
                 width: 100%;

@@ -39,10 +39,11 @@
                         </li>
                         <li>
                             <ul class="dropdown">
-                                <li class="menu-item"><a href="/profile">Profile</a></li>
-                                <li class="menu-item"><a href="/something-else">Something Else</a></li>
+                                <li class="menu-item"><span class="icon"><i class="fa fa-home"></i></span><a href="{{ action('HomeController@showHomePage' )}}">My Home</a></li>
+                                <li class="menu-item"><span class="icon"><i class="fa fa-user"></i></span><a href="/profile">Profile</a></li>
+                                <li class="menu-item"><span class="icon"><i class="fa fa-cog"></i></span><a href="/something-else">Account Settings</a></li>
                                 <li class="spacer"></li>
-                                <li class="menu-item"><a href="/logout">Logout</a></li>
+                                <li class="menu-item"><span class="icon"><i class="fa fa-sign-out"></i></span><a href="/logout">Logout</a></li>
                             </ul>
                         </li>
                     </ul>

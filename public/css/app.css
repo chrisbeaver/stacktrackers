@@ -6283,6 +6283,14 @@ footer {
   }
 }
 
+#nav-menu {
+  font-size: 120%;
+}
+
+#nav-menu .button {
+  font-size: 90%;
+}
+
 .menu {
   display: -webkit-box;
   display: flex;
@@ -6306,10 +6314,11 @@ footer {
   visibility: hidden;
   position: absolute;
   top: 62px;
-  width: 140%;
-  padding: 6px;
+  width: 150%;
+  padding: 8px;
   right: 0;
   text-align: left;
+  font-weight: 400%;
   background-color: #fff;
   border: 1px solid #C6C6C6;
 }
@@ -6325,15 +6334,23 @@ footer {
   position: absolute;
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
-  width: 14px;
+  width: 11px;
   background: #fff;
   top: -6px;
-  right: 22px;
+  right: 23px;
 }
 
 .menu .dropdown .menu-item {
   margin: 0;
   padding: .5em 0;
+}
+
+.menu .dropdown .menu-item a {
+  padding-left: 4px;
+}
+
+.menu .dropdown .menu-item:hover {
+  color: #4FB5A7;
 }
 
 .menu .dropdown .spacer {
