@@ -34,36 +34,70 @@ footer {
 // Nav Menus
 .menu {
     display: flex;
+    position: relative;
     .menu-item {
         position: relative;
+        vertical-align: baseline;
         &:not(:first-child) {
             margin-left: 20px;
         }
         a {
             // display: block;
-            // padding: 36px 10px;
+            // padding: 8px 0;
+            // margin-bottom: 10px;
             // font-size: 20px;
             // font-weight: 600;
             // text-transform: uppercase;
             &:hover {
-                color: $yellow;
+                color: $primary;
             }
         }
-        .dropdown {
+    }
+    .dropdown {
+            // visibility: hidden;
+            // position: absolute;
+            // top: 32px;
+            // left: 0;
+            // background-color: $dropdown-menu-background;
             visibility: hidden;
             position: absolute;
-            top: 32px;
-            left: 0;
-            background-color: $dropdown-menu-background;
+            top: 62px;
+            width: 140%;
+            padding: 6px;
+            right: 0;
+            text-align: left;
+            background-color: #fff;
+            border: 1px solid $dropdown-border;
+            &:before {
+                    border: 1px solid $dropdown-border;
+                    border-left: 0;
+                    border-bottom: 0;
+                    content: " ";
+                    display: block;
+                    height: 11px;
+                    pointer-events: none;
+                    position: absolute;
+                    -webkit-transform: rotate(-45deg);
+                    transform: rotate(-45deg);
+                    width: 14px;
+                    background: #fff;
+                    top: -6px;
+                    right: 22px;
+            }
             .menu-item {
                 margin: 0;
+                padding: .5em 0;
                 a {
-                    padding: 5px 10px;
+                    
                 }
             }
-        }
-        &:hover .dropdown {
+            .spacer {
+                width: 100%;
+                padding: 4px;
+                border-bottom: 1px dashed $dropdown-border; 
+            }
+    }
+    &:hover .dropdown {
             visibility: visible;
-        }
     }
 }

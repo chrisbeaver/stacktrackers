@@ -23,15 +23,9 @@
                 Blog
             </a>
 
-            <span class="nav-item is-tab">
+            <span class="nav-item is-tab menu">
                 @if(auth()->check())
-                    <a href="" class="button">
-                        <span class="icon">
-                            <i class="fa fa-database"></i>
-                        </span>
-                        <span>My Stack</span>
-                    </a>
-                    <ul class="menu">
+                    <ul>
                         <li class="menu-item">
                             <a class="button is-primary has-arrow" href="">
                                 <span class="icon">
@@ -42,9 +36,13 @@
                                     <i class="fa fa-angle-down"></i>
                                 </span>
                             </a>
+                        </li>
+                        <li>
                             <ul class="dropdown">
                                 <li class="menu-item"><a href="/profile">Profile</a></li>
                                 <li class="menu-item"><a href="/something-else">Something Else</a></li>
+                                <li class="spacer"></li>
+                                <li class="menu-item"><a href="/logout">Logout</a></li>
                             </ul>
                         </li>
                     </ul>

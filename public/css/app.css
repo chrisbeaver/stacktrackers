@@ -6286,10 +6286,12 @@ footer {
 .menu {
   display: -webkit-box;
   display: flex;
+  position: relative;
 }
 
 .menu .menu-item {
   position: relative;
+  vertical-align: baseline;
 }
 
 .menu .menu-item:not(:first-child) {
@@ -6297,26 +6299,50 @@ footer {
 }
 
 .menu .menu-item a:hover {
-  color: #ffdd57;
+  color: #4FB5A7;
 }
 
-.menu .menu-item .dropdown {
+.menu .dropdown {
   visibility: hidden;
   position: absolute;
-  top: 32px;
-  left: 0;
+  top: 62px;
+  width: 140%;
+  padding: 6px;
+  right: 0;
+  text-align: left;
   background-color: #fff;
+  border: 1px solid #C6C6C6;
 }
 
-.menu .menu-item .dropdown .menu-item {
+.menu .dropdown:before {
+  border: 1px solid #C6C6C6;
+  border-left: 0;
+  border-bottom: 0;
+  content: " ";
+  display: block;
+  height: 11px;
+  pointer-events: none;
+  position: absolute;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  width: 14px;
+  background: #fff;
+  top: -6px;
+  right: 22px;
+}
+
+.menu .dropdown .menu-item {
   margin: 0;
+  padding: .5em 0;
 }
 
-.menu .menu-item .dropdown .menu-item a {
-  padding: 5px 10px;
+.menu .dropdown .spacer {
+  width: 100%;
+  padding: 4px;
+  border-bottom: 1px dashed #C6C6C6;
 }
 
-.menu .menu-item:hover .dropdown {
+.menu:hover .dropdown {
   visibility: visible;
 }
 
