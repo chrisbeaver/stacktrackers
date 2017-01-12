@@ -5,7 +5,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['middlewre' => 'auth'], function() {
+Route::group(['middleware' => 'auth'], function() {
        Route::get('logout', 'AuthController@logout');
    });
 
@@ -30,4 +30,8 @@ Route::group(['prefix' => 'holdings', 'middleware' => 'auth'], function () {
 
 });
 
+// Home Controller is for Authenticated Users
+Route::group(['prefix' => 'home', 'middleware' => 'auth'], function() {
+    Route::get('/', 'HomeController@showHomePage');
+});
 
