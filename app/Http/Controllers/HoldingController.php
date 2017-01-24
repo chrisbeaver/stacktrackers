@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\HoldingRequest;
 use Carbon\Carbon;
 
 use App\Holding;
