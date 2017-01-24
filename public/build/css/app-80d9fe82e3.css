@@ -1002,20 +1002,20 @@ a.box:active {
 }
 
 .button.is-danger {
-  background-color: #ff3860;
+  background-color: #dd4964;
   border-width: 0;
   color: white;
 }
 
 .button.is-danger:hover, .button.is-danger:focus, .button.is-danger.is-active {
-  background-color: #ff1f4b;
+  background-color: #d93452;
   border-color: transparent;
   color: white;
 }
 
 .button.is-danger.is-inverted {
   background-color: white;
-  color: #ff3860;
+  color: #dd4964;
 }
 
 .button.is-danger.is-inverted:hover {
@@ -1028,14 +1028,14 @@ a.box:active {
 
 .button.is-danger.is-outlined {
   background-color: transparent;
-  border-color: #ff3860;
+  border-color: #dd4964;
   border-width: 1px;
-  color: #ff3860;
+  color: #dd4964;
 }
 
 .button.is-danger.is-outlined:hover, .button.is-danger.is-outlined:focus {
-  background-color: #ff3860;
-  border-color: #ff3860;
+  background-color: #dd4964;
+  border-color: #dd4964;
   color: white;
 }
 
@@ -1341,7 +1341,7 @@ a.box:active {
 
 .input.is-danger,
 .textarea.is-danger {
-  border-color: #ff3860;
+  border-color: #dd4964;
 }
 
 .input[type="search"],
@@ -1532,7 +1532,7 @@ a.box:active {
 }
 
 .select select.is-danger {
-  border-color: #ff3860;
+  border-color: #dd4964;
 }
 
 .select select:hover {
@@ -1661,7 +1661,7 @@ a.box:active {
 }
 
 .help.is-danger {
-  color: #ff3860;
+  color: #dd4964;
 }
 
 @media screen and (max-width: 768px) {
@@ -2074,7 +2074,7 @@ a.box:active {
 }
 
 .notification.is-danger {
-  background-color: #ff3860;
+  background-color: #dd4964;
   color: white;
 }
 
@@ -2171,11 +2171,11 @@ a.box:active {
 }
 
 .progress.is-danger::-webkit-progress-value {
-  background-color: #ff3860;
+  background-color: #dd4964;
 }
 
 .progress.is-danger::-moz-progress-bar {
-  background-color: #ff3860;
+  background-color: #dd4964;
 }
 
 .progress.is-small {
@@ -2777,7 +2777,7 @@ a.box:active {
 }
 
 .tag.is-danger {
-  background-color: #ff3860;
+  background-color: #dd4964;
   color: white;
 }
 
@@ -3490,16 +3490,16 @@ a.box:active {
 }
 
 .message.is-danger {
-  background-color: #ffebef;
+  background-color: #fceef0;
 }
 
 .message.is-danger .message-header {
-  background-color: #ff3860;
+  background-color: #dd4964;
   color: white;
 }
 
 .message.is-danger .message-body {
-  border-color: #ff3860;
+  border-color: #dd4964;
   color: gray;
 }
 
@@ -6089,7 +6089,7 @@ a.panel-block:hover {
 }
 
 .hero.is-danger {
-  background-color: #ff3860;
+  background-color: #dd4964;
   color: white;
 }
 
@@ -6117,7 +6117,7 @@ a.panel-block:hover {
 
 @media screen and (max-width: 768px) {
   .hero.is-danger .nav-menu {
-    background-color: #ff3860;
+    background-color: #dd4964;
   }
 }
 
@@ -6156,12 +6156,12 @@ a.panel-block:hover {
 .hero.is-danger .tabs.is-boxed li.is-active a, .hero.is-danger .tabs.is-boxed li.is-active a:hover, .hero.is-danger .tabs.is-toggle li.is-active a, .hero.is-danger .tabs.is-toggle li.is-active a:hover {
   background-color: white;
   border-color: white;
-  color: #ff3860;
+  color: #dd4964;
 }
 
 .hero.is-danger.is-bold {
-  background-image: -webkit-linear-gradient(309deg, #ff0561 0%, #ff3860 71%, #ff5257 100%);
-  background-image: linear-gradient(141deg, #ff0561 0%, #ff3860 71%, #ff5257 100%);
+  background-image: -webkit-linear-gradient(309deg, #d91a5d 0%, #dd4964 71%, #e65a5c 100%);
+  background-image: linear-gradient(141deg, #d91a5d 0%, #dd4964 71%, #e65a5c 100%);
 }
 
 @media screen and (max-width: 768px) {

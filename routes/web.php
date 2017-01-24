@@ -30,7 +30,7 @@ Route::group(['prefix' => 'holdings', 'middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'images'], function() {
 
-        Route::get('create', 'ImageController@addImagesForm');
+        Route::get('add', 'ImageController@addImagesForm');
         Route::post('/', 'ImageController@store');
     });
 

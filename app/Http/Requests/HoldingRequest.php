@@ -31,7 +31,7 @@ class HoldingRequest extends FormRequest
             'quantity' => 'required|numeric', 
             'finess' => 'in:999,980,958,950,925,900,400', 
             'purchase_price' => 'numeric', 
-            'purchase_date' => 'date', 
+            'purchase_date' => 'date_format:m-d-Y', 
             'purchase_currency' => 'in:usd'
         ];
     }

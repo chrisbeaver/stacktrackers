@@ -12,9 +12,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
         <link href="/css/animate.css" rel="stylesheet">
         <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
-        
-        
-        @yield('header-assets')
+        @stack('styles')
     </head>
     <body>
         @include('partials.navbar')
@@ -24,6 +22,6 @@
         @include('partials.footer')
         
         <script src="{{ elixir('js/app.js') }}"></script>
-        @yield('footer-assets')
+        @stack('scripts')
     </body>
 </html>

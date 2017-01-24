@@ -1,34 +1,89 @@
 @extends('layouts.main')
 
+@push('styles')
+<link href="//cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.0/css/swiper.min.css">
+@endpush
+
+
 @section('main-content')
-<div class="col-md-6 col-md-offset-3">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Add Images for {{ $holding->name }}</h3>
+
+{{-- Start View --}}
+<div id="start-view" class="add-view text-center">
+    <h1>Add Photos to Make an Impression!</h1>
+    <div class="start-splash">
+        <i class="fa fa-camera fa-5x"></i>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-2">
+            <a id="upload-btn" class="btn btn-primary btn-lg start-btn " href="#">
+               <i class="fa fa-desktop fa-2x"></i> <span class="text-white marb20">Upload from {{ BrowserDetect::isDesktop() ? 'computer' : 'device' }}</span>
+            </a>
         </div>
-        <div class="panel-body">
-            <form action="/holdings/images" method="POST" class="dropzone" id="holding-images-dropzone">
-                {{ csrf_field() }}
-                {{ Form:: hidden('holding_id', $holding->id) }}
-            </form>
+        <div class="col-md-4">
+            <a id="import-btn" class="btn btn-primary btn-lg start-btn " href="#">
+               <i class="fa fa-facebook fa-2x"></i> <span class="text-white">Import from facebook</span>
+            </a>
         </div>
     </div>
 </div>
+
+
+{{-- Upload View --}}
+<div id="upload-view" class="add-view text-center hidden">
+    <h1>Upload photos from your {{ BrowserDetect::isDesktop() ? 'computer' : 'device' }}</h1>
+
+
+    <form action='PhotoController@postUpload' method='POST' enctype="multipart/form-data" class="dropzone">
+        <div class="profile-tip text-center text-md">
+            <i class="fa fa-lightbulb-o"></i> Tip: Click any photo to set it as your profile photo.
+        </div>
+        <div class="fallback">
+            <div class="alert alert-warning text-md" role="alert">
+                Note: You may only upload one photo at a time because you are either using an outdated browser or HTML5 features are disabled.
+            </div>
+            <input type="file" required accept = "image/*" />
+        </div>
+    </form>
+
+    <div class="upload-btns mart25">
+        <button id="upload-cancel-btn" class="btn btn-default btn-lg">Cancel</button>
+        <button id="upload-submit-btn" class="btn btn-success btn-lg hidden" data-onsubmit="Uploading... <i class='fa fa-spinner fa-spin'></i>">Upload Photos</button>
+    </div>
+    <div id="uploadPreviewTemplate" class="hidden">
+        <div class="dz-preview dz-file-preview">
+            <div class="dz-image"><img data-dz-thumbnail /></div>
+            <div class="dz-details">
+                <div class="dz-filename"><span data-dz-name></span></div>
+                <div class="dz-size" data-dz-size></div>
+            </div>
+            <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
+            <div class="dz-success-mark"><span><i class="fa fa-check-circle"></i></span></div>
+            <div class="dz-error-mark"><span><i class="fa fa-times-circle"></i></span></div>
+            <div class="dz-error-message"><div data-dz-errormessage></div><button data-dz-remove class="btn btn-sm btn-default">ok</button></div>
+            <div class="dz-profile-message"><i class="fa fa-user"></i> Profile Photo</div>
+        </div>
+    </div>
+    <div id="uploadDefaultMessage" class="hidden">
+        {{ BrowserDetect::isDesktop() ? 'Drag & drop photos here or click to select.' : 'Click to select photos.' }}
+        <p><i class="fa fa-picture-o fa-3x"></i></p>
+    </div>
+</div>
+
 @endsection
 
-@section('footer-assets')
-<script>
-Dropzone.options.holdingImagesDropzone = {
-    paramName: "image", // The name that will be used to transfer the file
-    maxFilesize: 10, // MB
-    acceptedFiles: 'image/*'
-    // accept: function(file, done) {
-    //   if (file.name == "justinbieber.jpg") {
-    //     done("Naha, you don't.");
-    //   }
-    //   else { done(); }
-    // }
-};
+
+@push('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.0/js/swiper.jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
+<script type="text/javascript">
+$(function(){
+
+    // Start View
+
+
+});
 </script>
-@endsection
+
+@endpush
 
