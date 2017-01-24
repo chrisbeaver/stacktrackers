@@ -26,7 +26,13 @@ Route::group(['prefix' => 'holdings', 'middleware' => 'auth'], function () {
     Route::get('/', 'HoldingController@showMyHoldings');
     
     Route::get('create', 'HoldingController@showNewForm');
-    Route::post('create', 'HoldingController@store');
+    Route::post('/', 'HoldingController@store');
+
+    Route::group(['prefix' => 'images'], function() {
+
+        Route::get('create', 'ImageController@addImagesForm');
+        Route::post('/', 'ImageController@store');
+    });
 
 });
 
