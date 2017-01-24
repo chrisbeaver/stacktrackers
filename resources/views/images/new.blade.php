@@ -42,7 +42,7 @@
             <div class="alert alert-warning text-md" role="alert">
                 Note: You may only upload one photo at a time because you are either using an outdated browser or HTML5 features are disabled.
             </div>
-            <input type="file" required accept = "image/*" />
+            <input id="file" type="file" accept="image/*">
         </div>
     </form>
 
@@ -77,11 +77,39 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.0/js/swiper.jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
 <script type="text/javascript">
-$(function(){
+$(function() {
 
-    // Start View
+    var _initDropzone = function() {
 
+        var uploadMaxCt = (options.maxAvailable > 10) ? 10 : options.maxAvailable;
 
+        dropzone = new Dropzone($('.dropzone').get(0), {
+            url: '/editprofile/photos/saveupload',
+            maxFiles: 5,
+            // maxFilesize: options.maxFilesize,
+            addRemoveLinks: false,
+            acceptedFiles: 'image/*',
+            thumbnailWidth:150,
+            thumbnailHeight:150,
+            autoProcessQueue:false,
+            parallelUploads:1,
+            clickable:true,
+            addRemoveLinks:true,
+            dictDefaultMessage:$('#uploadDefaultMessage').html(),
+            dictRemoveFile:'<i class="fa fa-times-circle"></i>',
+            // previewTemplate: $('#uploadPreviewTemplate').html(),
+            forceFallback: options.forceFallback,
+            fallback: function(){
+                $(options.submitBtn).off('click.upload').on('click.upload',function(e){
+                    $('form.dropzone').submit();
+                }).html('Upload Photo');
+                $('#file').on('change',function(e){
+                    $(options.submitBtn).show();
+                }).removeClass('form-control');
+            }
+        });
+        _initDropzone();
+    }
 });
 </script>
 
