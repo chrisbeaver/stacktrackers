@@ -14,7 +14,7 @@
         <h1>Upload photos from your {{ BrowserDetect::isDesktop() ? 'computer' : 'device' }}</h1>
 
 
-        <form action='PhotoController@postUpload' method='POST' accept-charset="UTF-8" enctype="multipart/form-data" class="dropzone" role="form">
+        <form id="upload-form" action='PhotoController@postUpload' method='POST' accept-charset="UTF-8" enctype="multipart/form-data" class="dropzone" role="form">
             <div class="profile-tip text-center text-md">
                 <i class="fa fa-lightbulb-o"></i> Tip: Click any photo to set it as your profile photo.
             </div>
@@ -59,7 +59,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
 <script type="text/javascript">
 
-Dropzone.options.myAwesomeDropzone = {
+Dropzone.options.uploadForm = {
   paramName: "file", // The name that will be used to transfer the file
   maxFilesize: 2, // MB
   acceptedFiles: 'image/*'
