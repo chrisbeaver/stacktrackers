@@ -79,38 +79,33 @@
 <script type="text/javascript">
 $(function() {
 
-    var _initDropzone = function() {
-
-        var uploadMaxCt = (options.maxAvailable > 10) ? 10 : options.maxAvailable;
-
-        dropzone = new Dropzone($('.dropzone').get(0), {
-            url: '/editprofile/photos/saveupload',
-            maxFiles: 5,
-            // maxFilesize: options.maxFilesize,
-            addRemoveLinks: false,
-            acceptedFiles: 'image/*',
-            thumbnailWidth:150,
-            thumbnailHeight:150,
-            autoProcessQueue:false,
-            parallelUploads:1,
-            clickable:true,
-            addRemoveLinks:true,
-            // dictDefaultMessage:$('#uploadDefaultMessage').html(),
-            dictRemoveFile:'<i class="fa fa-times-circle"></i>'
-            // previewTemplate: $('#uploadPreviewTemplate').html(),
-            // forceFallback: options.forceFallback,
-            // fallback: function(){
-            //     $(options.submitBtn).off('click.upload').on('click.upload',function(e){
-            //         $('form.dropzone').submit();
-            //     }).html('Upload Photo');
-            //     $('#file').on('change',function(e){
-            //         $(options.submitBtn).show();
-            //     }).removeClass('form-control');
-            // }
-        });
-    }
-    _initDropzone();
+    dropzone = new Dropzone($('.dropzone').get(0), {
+        url: '/editprofile/photos/saveupload',
+        maxFiles: 5,
+        // maxFilesize: options.maxFilesize,
+        addRemoveLinks: false,
+        acceptedFiles: 'image/*',
+        thumbnailWidth:150,
+        thumbnailHeight:150,
+        autoProcessQueue:false,
+        parallelUploads:1,
+        clickable:true,
+        addRemoveLinks:true,
+        // dictDefaultMessage:$('#uploadDefaultMessage').html(),
+        dictRemoveFile:'<i class="fa fa-times-circle"></i>'
+        // previewTemplate: $('#uploadPreviewTemplate').html(),
+        // forceFallback: options.forceFallback,
+        // fallback: function(){
+        //     $(options.submitBtn).off('click.upload').on('click.upload',function(e){
+        //         $('form.dropzone').submit();
+        //     }).html('Upload Photo');
+        //     $('#file').on('change',function(e){
+        //         $(options.submitBtn).show();
+        //     }).removeClass('form-control');
+        // }
+    });
 });
+    
 </script>
 
 @endpush
