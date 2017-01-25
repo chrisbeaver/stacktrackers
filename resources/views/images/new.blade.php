@@ -34,7 +34,7 @@
     <h1>Upload photos from your {{ BrowserDetect::isDesktop() ? 'computer' : 'device' }}</h1>
 
 
-    <form action='PhotoController@postUpload' method='POST' enctype="multipart/form-data" class="dropzone">
+    <form action='PhotoController@postUpload' method='POST' accept-charset="UTF-8" enctype="multipart/form-data" class="dropzone" role="form">
         <div class="profile-tip text-center text-md">
             <i class="fa fa-lightbulb-o"></i> Tip: Click any photo to set it as your profile photo.
         </div>
