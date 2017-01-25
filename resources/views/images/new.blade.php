@@ -58,48 +58,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.0/js/swiper.jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
 <script type="text/javascript">
-
-Dropzone.options.uploadForm = {
-  paramName: "file", // The name that will be used to transfer the file
-  maxFilesize: 2, // MB
-  acceptedFiles: 'image/*'
-};
-
-// try {
-//     Dropzone.autoDiscover = false;
-//     Dropzone.fileLimitWarningShown = 0;
-// } catch(e) {
-//     // None found.
-// }
-// $(function() {
-
-//     dropzone = new Dropzone($('.dropzone').get(0), {
-//         url: '/editprofile/photos/saveupload',
-//         maxFiles: 5,
-//         // maxFilesize: options.maxFilesize,
-//         addRemoveLinks: false,
-//         acceptedFiles: 'image/*',
-//         thumbnailWidth:150,
-//         thumbnailHeight:150,
-//         autoProcessQueue:true,
-//         parallelUploads:1,
-//         clickable:true,
-//         addRemoveLinks:true,
-//         // dictDefaultMessage:$('#uploadDefaultMessage').html(),
-//         dictRemoveFile:'<i class="fa fa-times-circle"></i>',
-//         previewTemplate: $('#uploadPreviewTemplate').html()
-//         // forceFallback: options.forceFallback,
-//         // fallback: function(){
-//         //     $(options.submitBtn).off('click.upload').on('click.upload',function(e){
-//         //         $('form.dropzone').submit();
-//         //     }).html('Upload Photo');
-//         //     $('#file').on('change',function(e){
-//         //         $(options.submitBtn).show();
-//         //     }).removeClass('form-control');
-//         // }
-//     });
-// });
-    
+    Dropzone.options.uploadForm = {
+      paramName: "file", // The name that will be used to transfer the file
+      maxFilesize: 10, // MB
+      acceptedFiles: 'image/*'
+    };
 </script>
 
 @endpush
