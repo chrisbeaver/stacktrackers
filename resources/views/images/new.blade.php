@@ -78,7 +78,12 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
 <script type="text/javascript">
 $(function() {
-
+    try {
+        Dropzone.autoDiscover = false;
+        Dropzone.fileLimitWarningShown = 0;
+    } catch(e) {
+        // None found.
+    }
     dropzone = new Dropzone($('.dropzone').get(0), {
         url: '/editprofile/photos/saveupload',
         maxFiles: 5,
