@@ -58,13 +58,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.0/js/swiper.jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
 <script type="text/javascript">
-$(function() {
-    Dropzone.options.myAwesomeDropzone = {
-      paramName: "file", // The name that will be used to transfer the file
-      maxFilesize: 2, // MB
-      acceptedFiles: 'image/*'
-    };
-})
+
+Dropzone.options.myAwesomeDropzone = {
+  paramName: "file", // The name that will be used to transfer the file
+  maxFilesize: 2, // MB
+  acceptedFiles: 'image/*'
+};
+
 // try {
 //     Dropzone.autoDiscover = false;
 //     Dropzone.fileLimitWarningShown = 0;
