@@ -15,6 +15,12 @@ jQuery(function() {
         $(this).toggleClass('is-active');
         $menu.toggleClass('is-active');
     });
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 });
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -16,7 +16,7 @@ class CreateHoldingImagesTable extends Migration
         Schema::create('holding_images', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('holding_id');
-            $table->string('path', 100);
+            $table->string('file_hash', 100);
             $table->timestamps();
         });
     }

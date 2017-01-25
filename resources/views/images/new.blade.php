@@ -14,7 +14,7 @@
         <h1>Upload photos from your {{ BrowserDetect::isDesktop() ? 'computer' : 'device' }}</h1>
 
 
-        <form id="upload-form" action='PhotoController@postUpload' method='POST' accept-charset="UTF-8" enctype="multipart/form-data" class="dropzone" role="form">
+        <form id="upload-form" action="{{ action('ImageController@saveImage') }}" method='POST' accept-charset="UTF-8" enctype="multipart/form-data" class="dropzone" role="form">
             <div class="profile-tip text-center text-md">
                 <i class="fa fa-lightbulb-o"></i> Tip: Click any photo to set it as your profile photo.
             </div>
@@ -30,7 +30,7 @@
             <button id="upload-cancel-btn" class="btn btn-default btn-lg">Cancel</button>
             <button id="upload-submit-btn" class="btn btn-success btn-lg hidden" data-onsubmit="Uploading... <i class='fa fa-spinner fa-spin'></i>">Upload Photos</button>
         </div>
-        <div id="uploadPreviewTemplate" class="hidden">
+        {{-- <div id="uploadPreviewTemplate" class="hidden">
             <div class="dz-preview dz-file-preview">
                 <div class="dz-image"><img data-dz-thumbnail /></div>
                 <div class="dz-details">
@@ -47,7 +47,7 @@
         <div id="uploadDefaultMessage" class="hidden">
             {{ BrowserDetect::isDesktop() ? 'Drag & drop photos here or click to select.' : 'Click to select photos.' }}
             <p><i class="fa fa-picture-o fa-3x"></i></p>
-        </div>
+        </div> --}}
     </div>
 </div>
 
@@ -59,9 +59,12 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
 <script type="text/javascript">
     Dropzone.options.uploadForm = {
-      paramName: "file", // The name that will be used to transfer the file
-      maxFilesize: 10, // MB
-      acceptedFiles: 'image/*'
+        paramName: "file", // The name that will be used to transfer the file
+        maxFilesize: 10, // MB
+        acceptedFiles: 'image/*',
+        sending: function(file, xhr, formData) {
+            formData.append("_token", "{{ csrf_token() }}");
+        },
     };
 </script>
 

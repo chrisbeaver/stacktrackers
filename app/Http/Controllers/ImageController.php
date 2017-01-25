@@ -16,21 +16,21 @@ class ImageController extends Controller
         return view('images.new', compact('holding'));
     }
 
-    public function store(Request $request)
+    public function saveImage(Request $request)
     {
         // Store in storage/app/holding-images/originals
-        $request->image->store('holding-images/'.auth()->user()->id .'/originals/');
-        $file_name = md5_file($request->image).'.'.$request->image->extension();
+        $file = $request->file->store('holding-images/'.auth()->user()->id .'/originals');
+        $fileHash = substr($file, strrpos($file, '/') + 1);
 
         // Fit image to site preferred size.
-        $img = Image::make($request->image);
+        $img = Image::make($request->file);
 
         // resize image
         $img->resize(null, 768, function ($constraint) {
             $constraint->aspectRatio();
         });
         // save image fit for site views
-        $img->save(storage_path('app/holding-images/'.auth()->user()->id.'/'.$file_name));
+        $img->save(storage_path('app/holding-images/'.auth()->user()->id.'/'.$fileHash));
 
         // Make thumbnail
         $img->resize(null, 124, function ($constraint) {
@@ -38,9 +38,9 @@ class ImageController extends Controller
         });
 
         Storage::makeDirectory('holding-images/'.auth()->user()->id.'/thumbnails');
-        $path = storage_path('app/holding-images/'.auth()->user()->id.'/thumbnails/'.$file_name);
+        $path = storage_path('app/holding-images/'.auth()->user()->id.'/thumbnails/'.$fileHash);
         $img->save($path);
-        
-        HoldingImage::create(['holding_id' => $request->holding_id, 'path' => $path]);
+        if ($holding_id = session()->get('active_holding'))
+            return HoldingImage::create(['holding_id' => $holding_id, 'file_hash' => $fileHash]);
     }
 }

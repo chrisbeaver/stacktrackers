@@ -33,7 +33,7 @@ class HoldingController extends Controller
         // Store holding in session to attach images to it.
         session()->put('active_holding', $holding->id);
 
-        return redirect()->action('ImageController@create'); 
+        return redirect()->action('ImageController@addImagesForm'); 
 
     }
 }
