@@ -95,21 +95,21 @@ $(function() {
             parallelUploads:1,
             clickable:true,
             addRemoveLinks:true,
-            dictDefaultMessage:$('#uploadDefaultMessage').html(),
-            dictRemoveFile:'<i class="fa fa-times-circle"></i>',
+            // dictDefaultMessage:$('#uploadDefaultMessage').html(),
+            dictRemoveFile:'<i class="fa fa-times-circle"></i>'
             // previewTemplate: $('#uploadPreviewTemplate').html(),
-            forceFallback: options.forceFallback,
-            fallback: function(){
-                $(options.submitBtn).off('click.upload').on('click.upload',function(e){
-                    $('form.dropzone').submit();
-                }).html('Upload Photo');
-                $('#file').on('change',function(e){
-                    $(options.submitBtn).show();
-                }).removeClass('form-control');
-            }
+            // forceFallback: options.forceFallback,
+            // fallback: function(){
+            //     $(options.submitBtn).off('click.upload').on('click.upload',function(e){
+            //         $('form.dropzone').submit();
+            //     }).html('Upload Photo');
+            //     $('#file').on('change',function(e){
+            //         $(options.submitBtn).show();
+            //     }).removeClass('form-control');
+            // }
         });
-        _initDropzone();
     }
+    _initDropzone();
 });
 </script>
 
