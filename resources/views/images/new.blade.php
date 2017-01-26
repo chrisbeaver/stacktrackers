@@ -15,6 +15,7 @@
 
 
         <form id="upload-form" action="{{ action('ImageController@saveImage') }}" method='POST' accept-charset="UTF-8" enctype="multipart/form-data" class="dropzone" role="form">
+            <input type="hidden" name="holding_id" value="1" />
             <div class="profile-tip text-center text-md">
                 <i class="fa fa-lightbulb-o"></i> Tip: Click any photo to set it as your profile photo.
             </div>
@@ -62,10 +63,77 @@
         paramName: "file", // The name that will be used to transfer the file
         maxFilesize: 10, // MB
         acceptedFiles: 'image/*',
+        autoProcessQueue: false,
+        addRemoveLinks: true,
         sending: function(file, xhr, formData) {
             formData.append("_token", "{{ csrf_token() }}");
         },
     };
+    $(function() {
+        var dropzone = Dropzone.forElement('#upload-form');
+        $('#upload-submit-btn').on('click',function(e) {
+            
+            console.log(dropzone);
+            if (dropzone.files && dropzone.files.length>0) {
+
+                var acceptedFiles = [];
+                var clientErrors = [];
+                for (var i=0; i<dropzone.files.length; i++) {
+                    var file = dropzone.files[i];
+                    if (file.accepted) {
+                        acceptedFiles.push(file);
+                    } else {
+                        clientErrors.push(file.errorMessage);
+                    }
+
+                }
+                if (clientErrors.length>0) {
+                    var list = clientErrors.map(function(msg){
+                        return '<li>' + msg + '</li>'
+                    });
+                    // bootbox.alert({
+                    //     title:'Whoops - Some files will not be uploaded...',
+                    //     message:'<ul>' + list.join('') + '</ul>',
+                    //     callback:function(r){
+                    //         if (acceptedFiles.length>0) {
+                    //             dropzone.options.autoProcessQueue = true;
+                    //             dropzone.processQueue();
+                    //             toggleSubmitBtn(options.submitBtn,'submit');
+                    //         }
+                    //     }
+                    // });
+                }
+                else if (acceptedFiles.length>0) {
+                    dropzone.options.autoProcessQueue = true;
+                    dropzone.processQueue();
+                    // toggleSubmitBtn(options.submitBtn,'submit');
+                }
+            }
+        });
+        dropzone.on("queuecomplete", function() {
+
+            if (serverErrors.length>0) {
+                var list = serverErrors.map(function(msg){
+                    return '<li>' + msg + '</li>'
+                });
+                bootbox.alert({
+                    title:'Whoops - Some files were not uploaded...',
+                    message:'<ul>' + list.join('') + '</ul>',
+                    callback:function(r){
+                        if (hasSuccessfulUpload) {
+                            redirectSuccess();
+                        } else {
+                            reset();
+                        }
+                    }
+                });
+            }
+            else if (hasSuccessfulUpload) {
+                redirectSuccess();
+            }
+
+        });
+    });
 </script>
 
 @endpush

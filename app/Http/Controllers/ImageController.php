@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Image;
 use Storage;
 use App\Holding;
@@ -18,6 +19,13 @@ class ImageController extends Controller
 
     public function saveImage(Request $request)
     {
+        $holding = Holding::find($request->holding_id);
+        // Check if holding belongs to user
+        if (Gate::denies('add-image', $holding))
+        {
+            // Make this something better later.
+            return back();
+        }
         // Store in storage/app/holding-images/originals
         $file = $request->file->store('holding-images/'.auth()->user()->id .'/originals');
         $fileHash = substr($file, strrpos($file, '/') + 1);
@@ -40,7 +48,7 @@ class ImageController extends Controller
         Storage::makeDirectory('holding-images/'.auth()->user()->id.'/thumbnails');
         $path = storage_path('app/holding-images/'.auth()->user()->id.'/thumbnails/'.$fileHash);
         $img->save($path);
-        if ($holding_id = session()->get('active_holding'))
-            return HoldingImage::create(['holding_id' => $holding_id, 'file_hash' => $fileHash]);
+        
+        return HoldingImage::create(['holding_id' => $holding->id, 'file_hash' => $fileHash]);
     }
 }

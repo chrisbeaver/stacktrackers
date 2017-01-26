@@ -25,6 +25,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        // Used when uploading images for a holding.
+        Gate::define('add-image', function($user, $holding) {
+            return $user->id == $holding->user_id;
+        });
     }
 }

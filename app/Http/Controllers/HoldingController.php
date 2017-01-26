@@ -31,7 +31,7 @@ class HoldingController extends Controller
             'purchase_date' => $date, 'user_id' => $request->user_id,
             'purchase_currency' => $request->purchase_currency]);
         // Store holding in session to attach images to it.
-        session()->put('active_holding', $holding->id);
+        session()->flash('active_holding', $holding->id);
 
         return redirect()->action('ImageController@addImagesForm'); 
 

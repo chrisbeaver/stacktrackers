@@ -1,6 +1,7 @@
 /node_modules
 /public/storage
 /storage/*.key
+/storage/app/holding-images
 /vendor
 /.idea
 Homestead.json
