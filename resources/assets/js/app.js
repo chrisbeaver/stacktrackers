@@ -16,6 +16,11 @@ jQuery(function() {
         $menu.toggleClass('is-active');
     });
 
+    $('#main-dropdown').on('click', function(event) {
+        event.preventDefault();
+        console.log('toggle visibility');
+        $(this).parent().parent().toggleClass('is-active');
+    })
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

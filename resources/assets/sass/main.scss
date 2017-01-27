@@ -66,6 +66,7 @@ footer {
             // left: 0;
             // background-color: $dropdown-menu-background;
             visibility: hidden;
+            // display: none;
             position: absolute;
             top: 62px;
             width: 150%;
@@ -73,7 +74,7 @@ footer {
             right: 0;
             text-align: left;
             // font-size: 120%;
-            font-weight: 400%;
+            // font-weight: 400%;
             background-color: #fff;
             border: 1px solid $dropdown-border;
             &:before {
@@ -110,5 +111,9 @@ footer {
     }
     &:hover .dropdown {
             visibility: visible;
+            // display: block;
+    }
+    .is-active .dropdown {
+        visibility: visible;
     }
 }

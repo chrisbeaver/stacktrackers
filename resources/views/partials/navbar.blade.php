@@ -27,7 +27,7 @@
                 @if(auth()->check())
                     <ul>
                         <li class="menu-item">
-                            <a class="button is-primary has-arrow" href="">
+                            <a id="main-dropdown" class="button is-primary has-arrow" href="">
                                 <span class="icon">
                                     <i class="fa fa-user"></i>
                                 </span>

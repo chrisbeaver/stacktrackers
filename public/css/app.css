@@ -6318,7 +6318,6 @@ footer {
   padding: 8px;
   right: 0;
   text-align: left;
-  font-weight: 400%;
   background-color: #fff;
   border: 1px solid #C6C6C6;
 }
@@ -6360,6 +6359,10 @@ footer {
 }
 
 .menu:hover .dropdown {
+  visibility: visible;
+}
+
+.menu .is-active .dropdown {
   visibility: visible;
 }
 

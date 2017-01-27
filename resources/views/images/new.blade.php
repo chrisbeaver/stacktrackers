@@ -111,7 +111,7 @@
             }
         });
         dropzone.on("queuecomplete", function() {
-
+            window.location = "/home";
             if (serverErrors.length>0) {
                 var list = serverErrors.map(function(msg){
                     return '<li>' + msg + '</li>'
