@@ -22,8 +22,19 @@
             <a class="nav-item is-tab" href="#">
                 Blog
             </a>
-
-            <span class="nav-item is-tab menu">
+            @if(auth()->guest())
+                <a class="nav-item is-tab is-hidden-tablet" href="{{ action('AuthController@loginForm') }}">
+                    Login
+                </a>
+                <a class="nav-item is-tab is-hidden-tablet" href="{{ action('SignupController@signupForm') }}">
+                    Signup
+                </a>
+            @else
+                <a class="nav-item is-tab is-hidden-tablet" href="{{ action('AuthController@logout') }}">
+                    Logout
+                </a>
+            @endif
+            <span class="nav-item is-tab is-hidden-mobile menu">
                 @if(auth()->check())
                     <ul>
                         <li class="menu-item">
