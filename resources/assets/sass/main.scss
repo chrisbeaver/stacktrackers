@@ -1,4 +1,4 @@
-body {
+html {
     background-color: #ffffff;  // White
 }
 
@@ -9,6 +9,9 @@ body > .container {
 a {
     color: $anchor;
     text-decoration: none;
+    &:hover {
+        color: $anchor-hover;
+    }
 }
 .nav-item img {
     max-height: 44px;

@@ -6245,7 +6245,7 @@ a.panel-block:hover {
   border-bottom-color: #4FB5A7;
 }
 
-body {
+html {
   background-color: #ffffff;
 }
 
@@ -6257,6 +6257,10 @@ body > .container {
 a {
   color: #0cb59b;
   text-decoration: none;
+}
+
+a:hover {
+  color: #09f7cf;
 }
 
 .nav-item img {
