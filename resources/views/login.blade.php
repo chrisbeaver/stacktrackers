@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('main-content')
-<div class="columns" style="margin-bottom: 240px; margin-top: 40px;">
+<div class="columns" style="margin-bottom: 10em; margin-top: 1.75em;">
     <div class="column is-one-third is-offset-one-third">
         <div class="card is-fullwidth">
             <header class="card-header">

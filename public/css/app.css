@@ -6246,7 +6246,7 @@ a.panel-block:hover {
 }
 
 body {
-  background-color: #f7f7f7;
+  background-color: #ffffff;
 }
 
 body > .container {
@@ -6255,7 +6255,7 @@ body > .container {
 }
 
 a {
-  color: #555;
+  color: #0cb59b;
   text-decoration: none;
 }
 

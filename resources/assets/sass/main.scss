@@ -1,5 +1,5 @@
 body {
-    background-color: #f7f7f7;  // Off White
+    background-color: #ffffff;  // White
 }
 
 body > .container {
@@ -7,7 +7,7 @@ body > .container {
     margin-bottom: 40px;
 }
 a {
-    color: #555;
+    color: $anchor;
     text-decoration: none;
 }
 .nav-item img {
