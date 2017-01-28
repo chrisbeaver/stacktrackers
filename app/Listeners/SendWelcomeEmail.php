@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\UserSignupEvent;
+use App\Events\NewUserSignup;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -24,8 +24,8 @@ class SendWelcomeEmail
      * @param  UserSignupEvent  $event
      * @return void
      */
-    public function handle(UserSignupEvent $event)
+    public function handle(NewUserSignup $event)
     {
-        //
+        \Log::info($event->user->email);
     }
 }
