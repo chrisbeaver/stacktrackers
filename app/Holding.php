@@ -24,4 +24,15 @@ class Holding extends Model
     {
         return $this->belongsToMany('App\Tag');
     }
+
+    public function images()
+    {
+        return $this->hasMany('App\HoldingImage');
+    }
+
+    public function scopePublicPieces($query)
+    {
+        return $query->where('visibility','public');
+    }
+
 }
