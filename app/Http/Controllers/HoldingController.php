@@ -20,7 +20,7 @@ class HoldingController extends Controller
     public function showHolding($id)
     {
         $holding = Holding::with('images')->find($id);
-        return dd($holding);
+        return view('holdings.profile', compact('holding'));
     }
 
     public function showNewForm()
