@@ -7,6 +7,8 @@ Route::get('/', function () {
 
 // Public Holding Routes
 Route::get('holdings/view/{id}', 'HoldingController@showHolding');
+Route::get('holdings-image/{user_id}/{image_id}', 'ImageController@showImage');
+Route::get('holdings-thumb/{user_id}/{image_id}', 'ImageController@showThumb');
 
 Route::group(['middleware' => 'auth'], function() {
        Route::get('logout', 'AuthController@logout');

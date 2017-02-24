@@ -17,6 +17,16 @@ class ImageController extends Controller
         return view('images.new', compact('holding'));
     }
 
+    public function showImage($user_id, $image_id)
+    {
+        return HoldingImage::find($image_id)->link();
+    }
+
+    public function showThumb($user_id, $image_id)
+    {
+        return HoldingImage::find($image_id)->thumbnail();
+    }
+
     public function saveImage(Request $request)
     {
         $holding = Holding::find($request->holding_id);

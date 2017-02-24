@@ -13,8 +13,15 @@ class HoldingImage extends Model
         return $this->belongsTo('App\Holding');
     }
 
+    public function thumbnail()
+    {
+    	$image = storage_path('app/holding-images/'.$this->holding->user_id.'/thumbnails/'.$this->file_hash);
+    	return response()->file($image);
+    }
+
     public function link()
     {
-    	return storage_path('app/holding-images'.$this->user_id.'/'.$this->file_hash);
+    	$image = storage_path('app/holding-images/'.$this->holding->user_id.'/'.$this->file_hash);
+    	return response()->file($image);
     }
 }
