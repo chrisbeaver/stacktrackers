@@ -5,6 +5,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Public Holding Routes
+Route::get('holdings/view/{id}', 'HoldingController@showHolding');
+
 Route::group(['middleware' => 'auth'], function() {
        Route::get('logout', 'AuthController@logout');
    });

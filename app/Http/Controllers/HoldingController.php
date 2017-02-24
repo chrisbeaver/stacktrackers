@@ -17,6 +17,12 @@ class HoldingController extends Controller
         return view('holdings.index', compact('holdings'));
     }
 
+    public function showHolding($id)
+    {
+        $holding = Holding::with('images')->find($id);
+        return dd($holding);
+    }
+
     public function showNewForm()
     {
         return view('holdings.new');
