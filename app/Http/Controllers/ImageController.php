@@ -54,8 +54,8 @@ class ImageController extends Controller
             $fileData = $image['output']['data'];
             $fileHash = md5($fileData).'.'.substr($fileName, strrpos($fileName, '.') + 1);
 
-            Slim::saveFile($fileData, $fileHash, $storagePath);
-            $file = new File($storagePath.'/'.$fileHash);
+            Slim::saveFile($fileData, $fileHash, $storagePath.'/originals');
+            $file = new File($storagePath.'/originals/'.$fileHash);
 
             // Fit image to site preferred size.
             $img = Image::make($fileData);
@@ -65,6 +65,7 @@ class ImageController extends Controller
                 $constraint->aspectRatio();
             });
             // save image fit for site views
+            // Storage::makeDirectory('holding-images/'.$user_id.'/originals');
             $img->save(storage_path('app/holding-images/'.$user_id.'/'.$fileHash));
 
             // Make thumbnail
