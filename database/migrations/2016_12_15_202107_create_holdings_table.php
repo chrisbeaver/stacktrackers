@@ -27,9 +27,10 @@ class CreateHoldingsTable extends Migration
             $table->integer('year')->nullable();    // if applicable (coin)
             $table->date('purchase_date');          // date of purchase
             $table->enum('purchase_currency', ['usd'])->default('usd');
+            $table->boolean('anonymous')->default(false);
             $table->enum('visibility', ['private', 'public'])->default('public');
             $table->timestamps();
-        
+
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

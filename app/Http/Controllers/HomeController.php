@@ -10,6 +10,7 @@ class HomeController extends Controller
     public function showHomePage()
     {
     	$holdings = Holding::publicPieces()->orderBy('created_at')->get();
-        return view('homepage');
+        $tags = ['ASE', 'Maple Leaf', 'Panda', 'Queen\'s Beast'];
+        return view('homepage', compact('holdings', 'tags'));
     }
 }

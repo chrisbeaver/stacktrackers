@@ -79,5 +79,7 @@ class ImageController extends Controller
 
             HoldingImage::create(['holding_id' => $holding->id, 'file_hash' => $fileHash]);
         }
+
+        return redirect()->action('HoldingController@showMyHoldings');
     }
 }
