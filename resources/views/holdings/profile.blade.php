@@ -11,11 +11,11 @@
 @endsection
 
 @push('scripts')
-<script type="text/javascript" src="/venobox/venobox.min.js"></script>
+<script type="text/javascript" src="/venobox/venobox.js"></script>
 <script>
 	$(document).ready(function() {
 		/* default settings */
-		$('.venobox').venobox();
+		$('.venobox').venobox({ infinigall: true });
 	});
 </script>
 @endpush

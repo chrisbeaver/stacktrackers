@@ -11,10 +11,10 @@
  */
 (function($){
 
-    var autoplay, bgcolor, blocknum, blocktitle, border, core, container, content, dest, 
-        evitacontent, evitanext, evitaprev, extraCss, figliall, framewidth, frameheight, 
-        infinigall, items, keyNavigationDisabled, margine, numeratio, overlayColor, overlay, 
-        prima, title, thisgall, thenext, theprev, type, 
+    var autoplay, bgcolor, blocknum, blocktitle, border, core, container, content, dest,
+        evitacontent, evitanext, evitaprev, extraCss, figliall, framewidth, frameheight,
+        infinigall, items, keyNavigationDisabled, margine, numeratio, overlayColor, overlay,
+        prima, title, thisgall, thenext, theprev, type,
         finH, sonH, nextok, prevok;
 
     $.fn.extend({
@@ -30,7 +30,7 @@
               titleattr: 'title', // specific attribute to get a title (e.g. [data-title]) - thanx @mendezcode
               numeratio: false,
               infinigall: false,
-              overlayclose: true // disable overlay click-close - thanx @martybalandis 
+              overlayclose: true // disable overlay click-close - thanx @martybalandis
           };
 
           var option = $.extend(defaults, options);
@@ -61,7 +61,7 @@
                     framewidth = obj.data('framewidth');
                     frameheight = obj.data('frameheight');
                     // set data-autoplay="true" for vimeo and youtube videos - thanx @zehfernandes
-                    autoplay = obj.data('autoplay') || false; 
+                    autoplay = obj.data('autoplay') || false;
                     border = obj.data('border');
                     bgcolor = obj.data('bgcolor');
                     nextok = false;
@@ -92,7 +92,7 @@
 
                     // fade in overlay
                     overlay.animate({opacity:1}, 250, function(){
-    
+
                       if(obj.data('type') == 'iframe'){
                         loadIframe();
                       }else if (obj.data('type') == 'inline'){
@@ -166,10 +166,10 @@
                         }
                       }
                     }
-                    
+
                      /* -------- NAVIGATION CODE -------- */
                     var gallnav = {
-                      
+
                       prev: function() {
 
                         if (keyNavigationDisabled) {
@@ -199,7 +199,7 @@
                         }
 
                         content.animate({ opacity:0}, 500, function(){
-                          
+
                           overlay.css('background',overlayColor);
 
                           if (theprev.data('type') == 'iframe') {
@@ -224,7 +224,7 @@
                       },
 
                       next: function() {
-                        
+
                         if (keyNavigationDisabled) {
                           return;
                         } else {
@@ -251,7 +251,7 @@
                         }
 
                         content.animate({ opacity:0}, 500, function(){
-                          
+
                           overlay.css('background',overlayColor);
 
                           if (thenext.data('type') == 'iframe') {
@@ -294,12 +294,12 @@
                     $('.vbox-prev').click(function(){
                       gallnav.prev();
                     });
-                    
+
                     /* -------- NEXTGALL -------- */
                     $('.vbox-next').click(function(){
                       gallnav.next();
                     });
-                    
+
                     /* -------- ESCAPE HANDLER -------- */
                     function escapeHandler(e) {
                       if(e.keyCode === 27) {
@@ -310,7 +310,7 @@
                     /* -------- CLOSE VBOX -------- */
 
                     function closeVbox(){
-                      
+
                       $('body').removeClass('vbox-open');
                       $('body').unbind('keydown', escapeHandler);
 
@@ -396,7 +396,7 @@
         prima.one('load', function() {
           updateoverlay();
         }).each(function() {
-          if(this.complete) $(this).load();
+          // if(this.complete) $(this).load();
         });
     }
 
