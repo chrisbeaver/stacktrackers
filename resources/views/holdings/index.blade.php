@@ -32,14 +32,17 @@
 
             <!-- Right side -->
 
-            <p class="level-item has-text-centered">
-                <a class="button is-medium is-info" href="{{ action('HoldingController@showNewForm') }}">
-                    <span class="icon is-medium">
-                        <i class="fa fa-plus"></i>
-                    </span>
-                    <span>Add Piece</span>
-                </a>
-            </p>
+            <div class="level-item has-text-centered">
+                <p class="heading">Action</p>
+                <div class="block">
+                    <a class="button is-medium is-info" href="{{ action('HoldingController@showNewForm') }}">
+                        <span class="icon is-medium">
+                            <i class="fa fa-plus"></i>
+                        </span>
+                        <span>Add Piece</span>
+                    </a>
+                </div>
+            </div>
 
         </nav>
         <hr />
@@ -54,7 +57,7 @@
             <div class="media-content">
                 <div class="content">
                     <p>
-                        <strong>{{ $holding->name }}</strong> <small>@johnsmith</small> <small>31m</small>
+                        <strong><a href="{{ action('HoldingController@showHolding', $holding->id) }}">{{ $holding->name }}</a></strong> {{ $holding->quantity }}<small> pieces</small> {{ $holding->weight }}<small> {{ $holding->weight_unit == "ounces" ? "oz" : "g"}}/piece</small>
                         <br>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
                     </p>

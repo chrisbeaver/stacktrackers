@@ -6,6 +6,7 @@ Route::get('/', function () {
 });
 
 // Public Holding Routes
+Route::get('browse', 'BrowseController@index');
 Route::get('holdings/view/{id}', 'HoldingController@showHolding');
 Route::get('holdings-image/{user_id}/{image_id}', 'ImageController@showImage');
 Route::get('holdings-thumb/{user_id}/{image_id}', 'ImageController@showThumb');
@@ -15,7 +16,7 @@ Route::group(['middleware' => 'auth'], function() {
    });
 
 Route::group(['middleware' => 'guest'], function () {
-    
+
     // New User Registration
     Route::get('signup', 'SignupController@signupForm');
     Route::post('signup', 'SignupController@registerUser');
@@ -27,9 +28,9 @@ Route::group(['middleware' => 'guest'], function () {
 
 // Require Authentication for Holdings
 Route::group(['prefix' => 'holdings', 'middleware' => 'auth'], function () {
- 
+
     Route::get('/', 'HoldingController@showMyHoldings');
-    
+
     Route::get('create', 'HoldingController@showNewForm');
     Route::post('/', 'HoldingController@store');
 

@@ -1,7 +1,7 @@
 <nav class="nav has-shadow">
     <div class="container">
         <div class="nav-left">
-            <a class="nav-item is-brand" href="#">
+            <a class="nav-item is-brand" href="/">
               <img src="/images/navbar_logo.png" alt="Bulma logo">
             </a>
         </div>
@@ -13,13 +13,13 @@
         </span>
 
         <div id="nav-menu" class="nav-right nav-menu">
-            <a class="nav-item is-tab" href="#">
+            <a class="nav-item is-tab" href="{{ action('HomeController@showHomePage') }}">
                 Home
             </a>
-            <a class="nav-item is-tab" href="#">
+            <a class="nav-item is-tab" href="{{ action('BrowseController@index') }}">
                 Browse Stacks
             </a>
-            <a class="nav-item is-tab" href="#">
+            <a class="nav-item is-tab" href="http://blog.stacktrackers.com">
                 Blog
             </a>
             @if(auth()->guest())
