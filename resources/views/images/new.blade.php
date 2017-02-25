@@ -1,8 +1,32 @@
 @extends('layouts.main')
 
 @push('styles')
-<link href="//cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.0/css/swiper.min.css">
+<link href="/slim/slim.min.css" rel="stylesheet" type="text/css">
+<style>
+    .file-drop-area {
+        height: 180px;
+        display: block;
+    }
+
+   .file-drop-area label {
+        display: block;
+        padding: 2em;
+        background: #eee;
+        text-align: center;
+        cursor: pointer;
+        margin-top: 30px;
+    }
+
+    .slim {
+        display: inline-block;
+        max-width: 100%;
+        vertical-align: top;
+    }
+
+    .slim .slim-area .slim-result img {
+        width: auto;
+    }
+</style>
 @endpush
 
 
@@ -13,42 +37,18 @@
     <div id="upload-view" class="add-view text-center hidden">
         <h1>Upload photos from your {{ BrowserDetect::isDesktop() ? 'computer' : 'device' }}</h1>
 
-
-        <form id="upload-form" action="{{ action('ImageController@saveImage') }}" method='POST' accept-charset="UTF-8" enctype="multipart/form-data" class="dropzone" role="form">
-            <input type="hidden" name="holding_id" value="1" />
-            <div class="profile-tip text-center text-md">
-                <i class="fa fa-lightbulb-o"></i> Tip: Click any photo to set it as your profile photo.
+        <form id="upload-form" action="{{ action('ImageController@saveImage') }}" method='POST' accept-charset="UTF-8" enctype="multipart/form-data" role="form">
+            {{ csrf_field() }}
+            <div class="file-drop-area">
+                <label for="images">Drop your files here</label>
+                <input name="images[]" id="images" type="file" multiple>
             </div>
-            <div class="fallback">
-                <div class="alert alert-warning text-md" role="alert">
-                    Note: You may only upload one photo at a time because you are either using an outdated browser or HTML5 features are disabled.
-                </div>
-                <input id="file" type="file" accept="image/*">
+
+            <div class="upload-btns mart25">
+                <button id="upload-cancel-btn" class="btn btn-default btn-lg">Cancel</button>
+                <button id="upload-submit-btn" class="btn btn-success btn-lg hidden" data-onsubmit="Uploading... <i class='fa fa-spinner fa-spin'></i>">Upload Photos</button>
             </div>
         </form>
-
-        <div class="upload-btns mart25">
-            <button id="upload-cancel-btn" class="btn btn-default btn-lg">Cancel</button>
-            <button id="upload-submit-btn" class="btn btn-success btn-lg hidden" data-onsubmit="Uploading... <i class='fa fa-spinner fa-spin'></i>">Upload Photos</button>
-        </div>
-        {{-- <div id="uploadPreviewTemplate" class="hidden">
-            <div class="dz-preview dz-file-preview">
-                <div class="dz-image"><img data-dz-thumbnail /></div>
-                <div class="dz-details">
-                    <div class="dz-filename"><span data-dz-name></span></div>
-                    <div class="dz-size" data-dz-size></div>
-                </div>
-                <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
-                <div class="dz-success-mark"><span><i class="fa fa-check-circle"></i></span></div>
-                <div class="dz-error-mark"><span><i class="fa fa-times-circle"></i></span></div>
-                <div class="dz-error-message"><div data-dz-errormessage></div><button data-dz-remove class="btn btn-sm btn-default">ok</button></div>
-                <div class="dz-profile-message"><i class="fa fa-user"></i> Profile Photo</div>
-            </div>
-        </div>
-        <div id="uploadDefaultMessage" class="hidden">
-            {{ BrowserDetect::isDesktop() ? 'Drag & drop photos here or click to select.' : 'Click to select photos.' }}
-            <p><i class="fa fa-picture-o fa-3x"></i></p>
-        </div> --}}
     </div>
 </div>
 
@@ -56,84 +56,129 @@
 
 
 @push('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.0/js/swiper.jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
+<script src="/slim/slim.kickstart.js"></script>
 <script type="text/javascript">
-    Dropzone.options.uploadForm = {
-        paramName: "file", // The name that will be used to transfer the file
-        maxFilesize: 10, // MB
-        acceptedFiles: 'image/*',
-        autoProcessQueue: false,
-        addRemoveLinks: true,
-        sending: function(file, xhr, formData) {
-            formData.append("_token", "{{ csrf_token() }}");
+    // 1. Handling the various events
+    // - get references to different elements we need
+    // - listen to drag, drop and change events
+    // - handle dropped and selected files
+
+    // get a reference to the file drop area and the file input
+    var fileDropArea = document.querySelector('.file-drop-area');
+    var fileInput = fileDropArea.querySelector('input');
+    var fileInputName = fileInput.name;
+
+    // listen to events for dragging and dropping
+    fileDropArea.addEventListener('dragover', handleDragOver);
+    fileDropArea.addEventListener('drop', handleDrop);
+    fileInput.addEventListener('change', handleFileSelect);
+
+    // need to block dragover to allow drop
+    function handleDragOver(e) {
+      e.preventDefault();
+    }
+
+    // deal with dropped items,
+    function handleDrop(e) {
+      e.preventDefault();
+      handleFileItems(e.dataTransfer.items || e.dataTransfer.files);
+    }
+
+    // handle manual selection of files using the file input
+    function handleFileSelect(e) {
+      handleFileItems(e.target.files);
+    }
+
+    // 2. Handle the dropped items
+    // - test if the item is a File or a DataTransferItem
+    // - do some expectation matching
+
+    // loops over a list of items and passes
+    // them to the next function for handling
+    function handleFileItems(items) {
+      var l = items.length;
+      for (var i=0; i<l; i++) {
+        handleItem(items[i]);
+      }
+    }
+
+    // handles the dropped item, could be a DataTransferItem
+    // so we turn all items into files for easier handling
+    function handleItem(item) {
+
+      // get file from item
+      var file = item;
+      if (item.getAsFile && item.kind =='file') {
+        file = item.getAsFile();
+      }
+
+      handleFile(file);
+    }
+
+    // now we're sure each item is a file
+    // the function below can test if the files match
+    // our expectations
+    function handleFile(file) {
+
+      /*
+      // you can check if the file fits all requirements here
+      // for example:
+      // if file is bigger then 1 MB don't load
+      if (file.size > 1000000) {
+        return;
+      }
+      */
+
+      // if it does, create a cropper
+      createCropper(file);
+    }
+
+    // 3. Create the Image Cropper
+    // - create an element for the cropper to bind to
+    // - add the element after the drop area
+    // - creat the cropper and bind the remove button so it
+    //   removes the entire cropper when clicked.
+
+    // create an Image Cropper for each passed file
+    function createCropper(file) {
+
+      // create container element for cropper
+      var cropper = document.createElement('div');
+
+      // insert this element after the file drop area
+      fileDropArea.parentNode.insertBefore(cropper, fileDropArea.nextSibling);
+
+      // create a Slim Cropper
+      Slim.create(cropper, {
+        ratio: '16:9',
+        defaultInputName: fileInputName,
+        didInit: function() {
+
+          // load the file to our slim cropper
+          this.load(file);
+
         },
-    };
-    $(function() {
-        var dropzone = Dropzone.forElement('#upload-form');
-        $('#upload-submit-btn').on('click',function(e) {
-            
-            console.log(dropzone);
-            if (dropzone.files && dropzone.files.length>0) {
+        didRemove: function() {
 
-                var acceptedFiles = [];
-                var clientErrors = [];
-                for (var i=0; i<dropzone.files.length; i++) {
-                    var file = dropzone.files[i];
-                    if (file.accepted) {
-                        acceptedFiles.push(file);
-                    } else {
-                        clientErrors.push(file.errorMessage);
-                    }
+          // detach from DOM
+          cropper.parentNode.removeChild(cropper);
 
-                }
-                if (clientErrors.length>0) {
-                    var list = clientErrors.map(function(msg){
-                        return '<li>' + msg + '</li>'
-                    });
-                    // bootbox.alert({
-                    //     title:'Whoops - Some files will not be uploaded...',
-                    //     message:'<ul>' + list.join('') + '</ul>',
-                    //     callback:function(r){
-                    //         if (acceptedFiles.length>0) {
-                    //             dropzone.options.autoProcessQueue = true;
-                    //             dropzone.processQueue();
-                    //             toggleSubmitBtn(options.submitBtn,'submit');
-                    //         }
-                    //     }
-                    // });
-                }
-                else if (acceptedFiles.length>0) {
-                    dropzone.options.autoProcessQueue = true;
-                    dropzone.processQueue();
-                    // toggleSubmitBtn(options.submitBtn,'submit');
-                }
-            }
-        });
-        dropzone.on("queuecomplete", function() {
-            window.location = "/home";
-            if (serverErrors.length>0) {
-                var list = serverErrors.map(function(msg){
-                    return '<li>' + msg + '</li>'
-                });
-                bootbox.alert({
-                    title:'Whoops - Some files were not uploaded...',
-                    message:'<ul>' + list.join('') + '</ul>',
-                    callback:function(r){
-                        if (hasSuccessfulUpload) {
-                            redirectSuccess();
-                        } else {
-                            reset();
-                        }
-                    }
-                });
-            }
-            else if (hasSuccessfulUpload) {
-                redirectSuccess();
-            }
+          // destroy the slim cropper
+          this.destroy();
 
-        });
-    });
+        }
+      });
+
+    }
+
+    // 4. Disable the file input element
+
+    // hide file input, we can now upload with JavaScript
+    fileInput.style.display = 'none';
+
+    // remove file input name so it's value is
+    // not posted to the server
+    fileInput.removeAttribute('name');
 </script>
 
 @endpush

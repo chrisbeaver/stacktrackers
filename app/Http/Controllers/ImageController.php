@@ -29,6 +29,7 @@ class ImageController extends Controller
 
     public function saveImage(Request $request)
     {
+        return dd($request->images);
         $holding = Holding::find($request->holding_id);
         // Check if holding belongs to user
         if (Gate::denies('add-image', $holding))
@@ -58,7 +59,7 @@ class ImageController extends Controller
         Storage::makeDirectory('holding-images/'.auth()->user()->id.'/thumbnails');
         $path = storage_path('app/holding-images/'.auth()->user()->id.'/thumbnails/'.$fileHash);
         $img->save($path);
-        
+
         return HoldingImage::create(['holding_id' => $holding->id, 'file_hash' => $fileHash]);
     }
 }
