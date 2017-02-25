@@ -2,10 +2,10 @@
 
 @section('main-content')
 <div class="container">
-    <section class="hero call-to-action top-margin-40">
+    <section class="hero call-to-action">
         <div class="hero-body">
             <div class="container">
-                <h1 class="title rubberBand animated has-text-centered" style="font-size: 48px; color: #4D545D;">
+                <h1 class="title rubberBand animated has-text-centered" style="font-size: 48px; color: #4D545D;  font-weight: 400;">
                     The <strong>easiest</strong> way to track your stack!
                 </h1>
                 <h2 class="title pulse animated has-text-centered">
