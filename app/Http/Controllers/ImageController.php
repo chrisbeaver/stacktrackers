@@ -8,6 +8,7 @@ use Image;
 use Storage;
 use App\Holding;
 use App\HoldingImage;
+use App\Utility\Slim;
 
 class ImageController extends Controller
 {
@@ -29,37 +30,47 @@ class ImageController extends Controller
 
     public function saveImage(Request $request)
     {
-        return dd($request->images);
         $holding = Holding::find($request->holding_id);
+
         // Check if holding belongs to user
         if (Gate::denies('add-image', $holding))
         {
             // Make this something better later.
             return back();
         }
-        // Store in storage/app/holding-images/originals
-        $file = $request->file->store('holding-images/'.auth()->user()->id .'/originals');
-        $fileHash = substr($file, strrpos($file, '/') + 1);
 
-        // Fit image to site preferred size.
-        $img = Image::make($request->file);
+        $images = Slim::getImages();
 
-        // resize image
-        $img->resize(null, 768, function ($constraint) {
-            $constraint->aspectRatio();
-        });
-        // save image fit for site views
-        $img->save(storage_path('app/holding-images/'.auth()->user()->id.'/'.$fileHash));
 
-        // Make thumbnail
-        $img->resize(null, 124, function ($constraint) {
-            $constraint->aspectRatio();
-        });
+        foreach($images as $image)
+        {
+            // return dd(storage_path('app/holding-images/'.auth()->user()->id.'/'.$image['input']['name']));
+            $fileName = $image['input']['name'];
+            $fileHash = md5($image['input']['name']);
+            $storagePath = storage_path('app/holding-images/'.auth()->user()->id);
 
-        Storage::makeDirectory('holding-images/'.auth()->user()->id.'/thumbnails');
-        $path = storage_path('app/holding-images/'.auth()->user()->id.'/thumbnails/'.$fileHash);
-        $img->save($path);
+            $file = Slim::saveFile($image['output']['data'], $fileName, $storagePath);
 
-        return HoldingImage::create(['holding_id' => $holding->id, 'file_hash' => $fileHash]);
+            // Fit image to site preferred size.
+            $img = Image::make($image['output']['data']);
+
+            // resize image
+            $img->resize(null, 768, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            // save image fit for site views
+            $img->save(storage_path('app/holding-images/'.auth()->user()->id.'/'.$fileHash));
+
+            // Make thumbnail
+            $img->resize(null, 124, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+
+            Storage::makeDirectory('holding-images/'.auth()->user()->id.'/thumbnails');
+            $path = storage_path('app/holding-images/'.auth()->user()->id.'/thumbnails/'.$fileHash);
+            $img->save($path);
+
+            HoldingImage::create(['holding_id' => $holding->id, 'file_hash' => $fileHash]);
+        }
     }
 }

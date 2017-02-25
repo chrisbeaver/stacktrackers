@@ -39,6 +39,7 @@
 
         <form id="upload-form" action="{{ action('ImageController@saveImage') }}" method='POST' accept-charset="UTF-8" enctype="multipart/form-data" role="form">
             {{ csrf_field() }}
+            <input type="hidden" name="holding_id" value="{{ $holding->id }}" />
             <div class="file-drop-area">
                 <label for="images">Drop your files here</label>
                 <input name="images[]" id="images" type="file" multiple>
