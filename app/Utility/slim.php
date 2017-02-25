@@ -137,9 +137,9 @@ class Slim {
         }
 
         // Let's put a unique id in front of the filename so we don't accidentally overwrite older files
-        if ($uid) {
-            $name = uniqid() . '_' . Slim::sanitizeFileName($name);
-        }
+        // if ($uid) {
+        //     $name = uniqid() . '_' . Slim::sanitizeFileName($name);
+        // }
 
         // Add name to path, we need the full path including the name to save the file
         $path = $path . $name;

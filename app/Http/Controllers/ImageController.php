@@ -9,6 +9,7 @@ use Storage;
 use App\Holding;
 use App\HoldingImage;
 use App\Utility\Slim;
+use Illuminate\Http\File;
 
 class ImageController extends Controller
 {
@@ -44,30 +45,35 @@ class ImageController extends Controller
 
         foreach($images as $image)
         {
+            $user_id = auth()->user()->id;
+            $storagePath = storage_path('app/holding-images/'.$user_id);
+
+            // return dd($image['input']);
             // return dd(storage_path('app/holding-images/'.auth()->user()->id.'/'.$image['input']['name']));
             $fileName = $image['input']['name'];
-            $fileHash = md5($image['input']['name']);
-            $storagePath = storage_path('app/holding-images/'.auth()->user()->id);
+            $fileData = $image['output']['data'];
+            $fileHash = md5($fileData).'.'.substr($fileName, strrpos($fileName, '.') + 1);
 
-            $file = Slim::saveFile($image['output']['data'], $fileName, $storagePath);
+            Slim::saveFile($fileData, $fileHash, $storagePath);
+            $file = new File($storagePath.'/'.$fileHash);
 
             // Fit image to site preferred size.
-            $img = Image::make($image['output']['data']);
+            $img = Image::make($fileData);
 
             // resize image
             $img->resize(null, 768, function ($constraint) {
                 $constraint->aspectRatio();
             });
             // save image fit for site views
-            $img->save(storage_path('app/holding-images/'.auth()->user()->id.'/'.$fileHash));
+            $img->save(storage_path('app/holding-images/'.$user_id.'/'.$fileHash));
 
             // Make thumbnail
             $img->resize(null, 124, function ($constraint) {
                 $constraint->aspectRatio();
             });
 
-            Storage::makeDirectory('holding-images/'.auth()->user()->id.'/thumbnails');
-            $path = storage_path('app/holding-images/'.auth()->user()->id.'/thumbnails/'.$fileHash);
+            Storage::makeDirectory('holding-images/'.$user_id.'/thumbnails');
+            $path = $storagePath.'/thumbnails/'.$fileHash;
             $img->save($path);
 
             HoldingImage::create(['holding_id' => $holding->id, 'file_hash' => $fileHash]);
