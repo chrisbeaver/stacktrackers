@@ -8,7 +8,7 @@ Route::get('test', function() { return view('test'); });
 // Public Holding Routes
 Route::get('browse', 'BrowseController@index');
 Route::get('holdings/view/{id}', 'HoldingController@showHolding');
-Route::get('holdings/{user}', 'HoldingController@showUserHoldings');
+Route::get('users/{user}/holdings', 'HoldingController@showUserHoldings');
 
 Route::get('holdings-image/{user_id}/{image_id}', 'ImageController@showImage');
 Route::get('holdings-thumb/{user_id}/{image_id}', 'ImageController@showThumb');

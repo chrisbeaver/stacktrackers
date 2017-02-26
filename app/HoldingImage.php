@@ -7,21 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 class HoldingImage extends Model
 {
     protected $fillable = ['holding_id', 'file_hash'];
-    
+    protected $appends = ['link', 'thumbnail'];
+
     public function holding()
     {
         return $this->belongsTo('App\Holding');
     }
 
-    public function thumbnail()
+    public function getThumbnailAttribute()
     {
-    	$image = storage_path('app/holding-images/'.$this->holding->user_id.'/thumbnails/'.$this->file_hash);
-    	return response()->file($image);
+    	return storage_path('app/holding-images/'.$this->holding->user_id.'/thumbnails/'.$this->file_hash);
     }
 
-    public function link()
+    public function getLinkAttribute()
     {
-    	$image = storage_path('app/holding-images/'.$this->holding->user_id.'/'.$this->file_hash);
-    	return response()->file($image);
+    	return storage_path('app/holding-images/'.$this->holding->user_id.'/'.$this->file_hash);
     }
 }

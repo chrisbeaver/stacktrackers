@@ -23,7 +23,7 @@ class HoldingController extends Controller
 
     public function showUserHoldings(User $user)
     {
-       $holdings = $user->holdings;
+       $holdings = $user->publicHoldings ?: [];
        return view('holdings.user', compact('holdings'));
     }
 

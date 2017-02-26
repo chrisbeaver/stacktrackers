@@ -11,6 +11,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $appends = ['publicHoldings'];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -37,5 +39,20 @@ class User extends Authenticatable
     public function holdings()
     {
         return $this->hasMany('App\Holding');
+    }
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'username';
+    }
+
+    public function getPublicHoldingsAttribute()
+    {
+        return $this->holdings->where('visibility','public');
     }
 }

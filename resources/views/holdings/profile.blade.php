@@ -40,7 +40,7 @@
 
             <div class="container">
                 <h1 class="title">{{ $holding->name }}</h1>
-                <h2 class="subtitle"><a href="">{{ "@".$holding->user->username }}</a></h2>
+                <h2 class="subtitle"><a href="{{ action('HoldingController@showUserHoldings', ['user' => $holding->user]) }}">{{ "@".$holding->user->username }}</a></h2>
             </div>
             <br />
             <div class="columns">
@@ -51,6 +51,7 @@
                 </div>
             </div>
 
+            <hr />
             <nav class="level">
                 <div class="level-item has-text-centered">
                     <div>
@@ -76,6 +77,7 @@
                         <p class="title">$24.50</p>
                     </div>
                 </div>
+            </nav>
         </div>
     </div>
 </div>

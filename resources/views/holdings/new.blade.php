@@ -32,13 +32,19 @@
                     {!! Form::open(['url' => action('HoldingController@store')]) !!}
                     {!! Form::hidden('user_id', auth()->user()->id) !!}
                     <div class="columns">
-                        <div class="column is-8">
+                        <div class="column is-5">
                             <label class="label">Metal Name</label>
                             <p class="control">
-                                <input name="name" class="input is-success" type="text" placeholder="Generic Ounce" required autofocus />
+                                <input name="name" class="input is-success" type="text" placeholder="American Eagle" required autofocus />
                             </p>
                         </div>
-                        <div class="column is-4">
+                        <div class="column is-3">
+                            <label class="label">Mint</label>
+                            <p class="control">
+                                <input name="mint" class="input is-success" type="text" placeholder="US Government" required />
+                            </p>
+                        </div>
+                        <div class="column is-2">
                         <label class="label">Year</label>
                             <p class="control">
                                 <input name="year" class="input is-success" type="text" placeholder="{{ date('Y') }}" />
@@ -49,7 +55,7 @@
                         <div class="column is-4">
                             <label class="label">Weight</label>
                             <p class="control">
-                                <input name="weight" class="input is-success" type="text" placeholder="2" />
+                                <input name="weight" class="input is-success" type="text" placeholder="1" />
                             </p>
                         </div>
                         <div class="column is-3 is-fullwidth">
@@ -60,7 +66,19 @@
                                 </span>
                             </p>
                         </div>
-
+                        <div class="column is-3">
+                            <label class="label">Visibility</label>
+                            <p class="control">
+                                <label class="radio">
+                                    <input type="radio" name="visibility" value="public" checked>
+                                    Public
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" name="visibility" value="private">
+                                    Private
+                                </label>
+                            </p>
+                        </div>
                     </div>
                     <div class="columns">
                         <div class="column is-3">
@@ -69,7 +87,7 @@
                                 <input name="quantity" class="input is-success" type="text" placeholder="1" />
                             </p>
                         </div>
-                        <div class="column is-6">
+                        <div class="column is-4">
                             <label class="label">Finess</label>
                             <p class="control">
                                 <span class="select is-fullwidth">
@@ -78,6 +96,19 @@
                                                             925 => '.925 Seterling Silver', 900 => '90% Silver (US Coins 1792-1964)',
                                                             400 => '40% Silver'], null, ['class' => 'form-control']) !!}
                                 </span>
+                            </p>
+                        </div>
+                        <div class="column is-4">
+                            <label class="label">List Publicly as Anonymous?</label>
+                            <p class="control">
+                                <label class="radio">
+                                    <input type="radio" name="anonymous" value="1">
+                                    Yes
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" name="anonymous" value="0" checked>
+                                    No
+                                </label>
                             </p>
                         </div>
                     </div>

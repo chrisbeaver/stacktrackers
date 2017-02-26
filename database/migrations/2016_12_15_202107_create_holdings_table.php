@@ -21,6 +21,7 @@ class CreateHoldingsTable extends Migration
             $table->string('name', 60);
             $table->float('weight', 6,4);           // single unit weight
             $table->enum('weight_unit', ['ounces', 'grams']);
+            $table->string('mint', 40);
             $table->integer('finess');              // .999 for fine etc...
             $table->integer('purchase_price');      // purchase price in USD
             $table->integer('quantity');            // quantity purchased
