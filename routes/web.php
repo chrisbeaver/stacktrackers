@@ -4,7 +4,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('test', function() { return view('test'); });
 // Public Holding Routes
 Route::get('browse', 'BrowseController@index');
 Route::get('holdings/view/{id}', 'HoldingController@showHolding');

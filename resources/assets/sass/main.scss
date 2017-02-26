@@ -41,7 +41,7 @@ footer {
         font-size: 90%;
     }
 }
-.menu {
+.nav-item.is-tab.menu {
     display: flex;
     position: relative;
     .menu-item {
@@ -99,17 +99,17 @@ footer {
             .menu-item {
                 margin: 0;
                 padding: .5em 0;
-                a { 
+                a {
                     padding-left: 4px;
                 }
                 &:hover {
                     color: $primary;
-                } 
+                }
             }
             .spacer {
                 width: 100%;
                 padding: 4px;
-                border-bottom: 1px dashed $dropdown-border; 
+                border-bottom: 1px dashed $dropdown-border;
             }
     }
     &:hover .dropdown {
