@@ -42,6 +42,10 @@ Route::group(['prefix' => 'holdings', 'middleware' => 'auth'], function () {
 
 });
 
+Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function() {
+    Route::get('/', 'ProfileController@showEditProfilePage');
+});
+
 // Home Controller is for Authenticated Users
 Route::group(['prefix' => 'home', 'middleware' => 'auth'], function() {
     Route::get('/', 'HomeController@showHomePage');
