@@ -10,17 +10,17 @@
         <p class="menu-label">
             Market Place
         </p>
-        <ul class="menu-list">
-            <li><a>Invitations</a></li>
-            <li><a>Cloud Storage Environment Settings</a></li>
-            <li><a>Authentication</a></li>
+        <ul class="menu-list is-disabled" >
+            <li><a style="color: #dbdbdb;">My Offers</a></li>
+            <li><a style="color: #dbdbdb;">List Piece</a></li>
+            <li><a style="color: #dbdbdb;">Transaction History</a></li>
         </ul>
         <p class="menu-label">
             Reports
         </p>
-        <ul class="menu-list">
-            <li><a>Generate CSV</a></li>
-            <li><a>Generate PDF</a></li>
+        <ul class="menu-list is-disabled">
+            <li><a style="color: #dbdbdb;">Generate CSV</a></li>
+            <li><a style="color: #dbdbdb;">Generate PDF</a></li>
         </ul>
         <p class="menu-label">
             Support
