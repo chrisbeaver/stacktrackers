@@ -66,5 +66,6 @@ class RegisterController extends Controller
         $user = User::create(['email' => $data['email'], 'username' => $data['username'],
                               'password' => $data['password']]);
         event(new NewUserSignup($user));
+        return $user;
     }
 }
