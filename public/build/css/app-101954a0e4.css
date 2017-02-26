@@ -888,20 +888,20 @@ a.box:active {
 }
 
 .button.is-info {
-  background-color: #915277;
+  background-color: #2374AB;
   border-width: 0;
   color: white;
 }
 
 .button.is-info:hover, .button.is-info:focus, .button.is-info.is-active {
-  background-color: #81496a;
+  background-color: #1f6696;
   border-color: transparent;
   color: white;
 }
 
 .button.is-info.is-inverted {
   background-color: white;
-  color: #915277;
+  color: #2374AB;
 }
 
 .button.is-info.is-inverted:hover {
@@ -914,14 +914,14 @@ a.box:active {
 
 .button.is-info.is-outlined {
   background-color: transparent;
-  border-color: #915277;
+  border-color: #2374AB;
   border-width: 1px;
-  color: #915277;
+  color: #2374AB;
 }
 
 .button.is-info.is-outlined:hover, .button.is-info.is-outlined:focus {
-  background-color: #915277;
-  border-color: #915277;
+  background-color: #2374AB;
+  border-color: #2374AB;
   color: white;
 }
 
@@ -1326,7 +1326,7 @@ a.box:active {
 
 .input.is-info,
 .textarea.is-info {
-  border-color: #915277;
+  border-color: #2374AB;
 }
 
 .input.is-success,
@@ -1520,7 +1520,7 @@ a.box:active {
 }
 
 .select select.is-info {
-  border-color: #915277;
+  border-color: #2374AB;
 }
 
 .select select.is-success {
@@ -1649,7 +1649,7 @@ a.box:active {
 }
 
 .help.is-info {
-  color: #915277;
+  color: #2374AB;
 }
 
 .help.is-success {
@@ -2059,7 +2059,7 @@ a.box:active {
 }
 
 .notification.is-info {
-  background-color: #915277;
+  background-color: #2374AB;
   color: white;
 }
 
@@ -2147,11 +2147,11 @@ a.box:active {
 }
 
 .progress.is-info::-webkit-progress-value {
-  background-color: #915277;
+  background-color: #2374AB;
 }
 
 .progress.is-info::-moz-progress-bar {
-  background-color: #915277;
+  background-color: #2374AB;
 }
 
 .progress.is-success::-webkit-progress-value {
@@ -2762,7 +2762,7 @@ a.box:active {
 }
 
 .tag.is-info {
-  background-color: #915277;
+  background-color: #2374AB;
   color: white;
 }
 
@@ -3448,16 +3448,16 @@ a.box:active {
 }
 
 .message.is-info {
-  background-color: #f8f2f5;
+  background-color: #eef6fc;
 }
 
 .message.is-info .message-header {
-  background-color: #915277;
+  background-color: #2374AB;
   color: white;
 }
 
 .message.is-info .message-body {
-  border-color: #915277;
+  border-color: #2374AB;
   color: gray;
 }
 
@@ -5816,7 +5816,7 @@ a.panel-block:hover {
 }
 
 .hero.is-info {
-  background-color: #915277;
+  background-color: #2374AB;
   color: white;
 }
 
@@ -5844,7 +5844,7 @@ a.panel-block:hover {
 
 @media screen and (max-width: 768px) {
   .hero.is-info .nav-menu {
-    background-color: #915277;
+    background-color: #2374AB;
   }
 }
 
@@ -5883,12 +5883,12 @@ a.panel-block:hover {
 .hero.is-info .tabs.is-boxed li.is-active a, .hero.is-info .tabs.is-boxed li.is-active a:hover, .hero.is-info .tabs.is-toggle li.is-active a, .hero.is-info .tabs.is-toggle li.is-active a:hover {
   background-color: white;
   border-color: white;
-  color: #915277;
+  color: #2374AB;
 }
 
 .hero.is-info.is-bold {
-  background-image: -webkit-linear-gradient(309deg, #793769 0%, #915277 71%, #a85578 100%);
-  background-image: linear-gradient(141deg, #793769 0%, #915277 71%, #a85578 100%);
+  background-image: -webkit-linear-gradient(309deg, #136c88 0%, #2374AB 71%, #2268c6 100%);
+  background-image: linear-gradient(141deg, #136c88 0%, #2374AB 71%, #2268c6 100%);
 }
 
 @media screen and (max-width: 768px) {
@@ -6271,9 +6271,8 @@ a:hover {
   margin-top: 40px;
 }
 
-footer {
-  background-image: -webkit-linear-gradient(45deg, #dbdbdb, #c0c0c0);
-  background-image: linear-gradient(45deg, #dbdbdb, #c0c0c0);
+.footer {
+  background-color: #7fd4c8;
   padding-bottom: 40px;
   border-top: 1px solid #fff;
 }
