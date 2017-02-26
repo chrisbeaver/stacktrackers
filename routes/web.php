@@ -8,6 +8,8 @@ Route::get('test', function() { return view('test'); });
 // Public Holding Routes
 Route::get('browse', 'BrowseController@index');
 Route::get('holdings/view/{id}', 'HoldingController@showHolding');
+Route::get('holdings/{user}', 'HoldingController@showUserHoldings');
+
 Route::get('holdings-image/{user_id}/{image_id}', 'ImageController@showImage');
 Route::get('holdings-thumb/{user_id}/{image_id}', 'ImageController@showThumb');
 
@@ -32,6 +34,7 @@ Route::group(['prefix' => 'holdings', 'middleware' => 'auth'], function () {
     Route::get('/', 'HoldingController@showMyHoldings');
 
     Route::get('create', 'HoldingController@showNewForm');
+    Route::get('{id}/edit', 'HoldingController@showEditForm');
     Route::post('/', 'HoldingController@store');
 
     Route::group(['prefix' => 'images'], function() {

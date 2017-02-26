@@ -7,6 +7,7 @@ use App\Http\Requests\HoldingRequest;
 use Carbon\Carbon;
 
 use App\Holding;
+use App\User;
 
 class HoldingController extends Controller
 {
@@ -20,6 +21,12 @@ class HoldingController extends Controller
         return view('holdings.index', compact('holdings', 'total_pieces', 'total_weight', 'tags'));
     }
 
+    public function showUserHoldings(User $user)
+    {
+       $holdings = $user->holdings;
+       return view('holdings.user', compact('holdings'));
+    }
+
     public function showHolding($id)
     {
         $holding = Holding::with('images')->find($id);
@@ -29,6 +36,14 @@ class HoldingController extends Controller
     public function showNewForm()
     {
         return view('holdings.new');
+    }
+
+    public function showEditForm($id)
+    {
+        // Need a gate here.
+        $holding = Holding::find($id);
+        return dd($holding);
+        return view('holdings.edit');
     }
 
     public function store(HoldingRequest $request)
