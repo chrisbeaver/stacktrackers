@@ -40,14 +40,44 @@
 
             <div class="container">
                 <h1 class="title">{{ $holding->name }}</h1>
-                <h2 class="subtitle">Hero subtitle</h2>
+                <h2 class="subtitle"><a href="">{{ "@".$holding->user->username }}</a></h2>
+            </div>
+            <br />
+            <div class="columns">
+                <div class="column">
+                @foreach($holding->images as $image)
+                    <a class="venobox" data-gall="holdings" href="{{ action('ImageController@showImage', ['user_id' => $holding->user_id, 'image_id' => $image->id]) }}"><img src="{{ action('ImageController@showThumb', ['user_id' => $holding->user_id, 'image_id' => $image->id]) }}" alt="image alt"/></a>
+                @endforeach
+                </div>
             </div>
 
+            <nav class="level">
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">Year</p>
+                        <p class="title">{{ $holding->year ?: "unknown" }}</p>
+                    </div>
+                </div>
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">Finess</p>
+                        <p class="title">.{{ $holding->finess }}</p>
+                    </div>
+                </div>
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">Weight</p>
+                        <p class="title">{{ "$holding->weight $holding->weight_unit" }}</p>
+                    </div>
+                </div>
+                <div class="level-item has-text-centered">
+                    <div>
+                        <p class="heading">Melt Value</p>
+                        <p class="title">$24.50</p>
+                    </div>
+                </div>
         </div>
     </div>
-    @foreach($holding->images as $image)
-	   <a class="venobox" data-gall="holdings" href="{{ action('ImageController@showImage', ['user_id' => $holding->user_id, 'image_id' => $image->id]) }}"><img src="{{ action('ImageController@showThumb', ['user_id' => $holding->user_id, 'image_id' => $image->id]) }}" alt="image alt"/></a>
-	@endforeach
 </div>
 @endsection
 
