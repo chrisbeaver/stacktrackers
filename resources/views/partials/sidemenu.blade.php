@@ -3,34 +3,31 @@
         <p class="menu-label">
             My Holdings
         </p>
-      <ul class="menu-list">
-        <li><a href="{{ action('HoldingController@showMyHoldings') }}">View Stack</a></li>
-        <li><a href="{{ action('HoldingController@showNewForm') }}">Add Piece</a></li>
-      </ul>
-      <p class="menu-label">
-        Administration
-      </p>
-      <ul class="menu-list">
-        <li><a>Team Settings</a></li>
-        <li>
-          <a class="is-active">Manage Your Team</a>
-          <ul>
-            <li><a>Members</a></li>
-            <li><a>Plugins</a></li>
-            <li><a>Add a member</a></li>
-          </ul>
-        </li>
-        <li><a>Invitations</a></li>
-        <li><a>Cloud Storage Environment Settings</a></li>
-        <li><a>Authentication</a></li>
-      </ul>
-      <p class="menu-label">
-        Transactions
-      </p>
-      <ul class="menu-list">
-        <li><a>Payments</a></li>
-        <li><a>Transfers</a></li>
-        <li><a>Balance</a></li>
-      </ul>
+        <ul class="menu-list">
+            <li><a href="{{ action('HoldingController@showMyHoldings') }}">View Stack</a></li>
+            <li><a href="{{ action('HoldingController@showNewForm') }}">Add Piece</a></li>
+        </ul>
+        <p class="menu-label">
+            Market Place
+        </p>
+        <ul class="menu-list">
+            <li><a>Invitations</a></li>
+            <li><a>Cloud Storage Environment Settings</a></li>
+            <li><a>Authentication</a></li>
+        </ul>
+        <p class="menu-label">
+            Reports
+        </p>
+        <ul class="menu-list">
+            <li><a>Generate CSV</a></li>
+            <li><a>Generate PDF</a></li>
+        </ul>
+        <p class="menu-label">
+            Support
+        </p>
+        <ul class="menu-list">
+            <li><a>FAQ</a></li>
+            <li><a>Contact Us</a></li>
+        </ul>
     </aside>
 </div>
