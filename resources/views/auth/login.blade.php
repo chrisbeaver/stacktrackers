@@ -10,19 +10,19 @@
                 </p>
             </header>
             <div class="card-content">
-                {!! Form::open(['url' => action('AuthController@login')]) !!}
+                {!! Form::open(['url' => action('Auth\LoginController@login')]) !!}
 
-                    <label class="label">Email</label>
+                    <label class="label">Username\Email</label>
                     <p class="control">
-                        <input name="email" class="input is-success" type="email" placeholder="name@email.com" required autofocus />
+                        <input name="email" class="input is-success" type="text" placeholder="name@email.com" required autofocus />
                     </p>
 
                     <label class="label">Password</label>
                     <p class="control">
                         <input name="password" class="input is-success" type="password" placeholder="name@email.com" required autofocus />
-                        <a href="">Forgot your password?</a>
+                        <a href="{{ route('password.request') }}">Forgot your password?</a>
                     </p>
-
+                    <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
                     <button type="submit" class="button is-info is-fullwidth">Login</button>
 
                 {!! Form::close() !!}
@@ -30,7 +30,7 @@
         </div>
         <div class="card is-fullwidth">
             <div class="card-content">
-                Don't have an account? <a href="{{ action('SignupController@signupForm') }}">Create a free</a> one today!
+                Don't have an account? <a href="{{ route('register') }}">Create a free</a> one today!
             </div>
         </div>
     </div>

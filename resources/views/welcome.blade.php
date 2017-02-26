@@ -9,11 +9,11 @@
                     The <strong>easiest</strong> way to track your stack!
                 </h1>
                 <h2 class="title pulse animated has-text-centered">
-                    Create your <strong><a href="{{ action('SignupController@signupForm') }}">free account</a></strong> today!
+                    Create your <strong><a href="{{ action('Auth\RegisterController@showRegistrationForm') }}">free account</a></strong> today!
                 </h2>
 
                 <div class="has-text-centered">
-                    <a class="button is-outlined is-primary is-large w-100-mobile" href="{{ action('SignupController@signupForm') }}"><strong>Start Stacking</strong></a>
+                    <a class="button is-outlined is-primary is-large w-100-mobile" href="{{ action('Auth\RegisterController@showRegistrationForm') }}"><strong>Start Stacking</strong></a>
                     &nbsp;
                     &nbsp;
                     <a class="button is-outlined is-info is-large w-100-mobile" href="{{ action('BrowseController@index') }}"><strong>Browse Stacks</strong></a>
@@ -24,7 +24,7 @@
     <div class="content">
         <h1>Join the growing community!</h1>
         <p>Keeping track of your growing stack has never been more fun! Join us today by
-         creating your own <a href="{{ action('SignupController@signupForm') }}">free account</a>.
+         creating your own <a href="{{ action('Auth\RegisterController@showRegistrationForm') }}">free account</a>.
          StackTrackers makes it to simple to track, share, and continue building your stack.
         </p>
         <h2>Second level</h2>

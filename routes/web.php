@@ -14,18 +14,24 @@ Route::get('holdings-image/{user_id}/{image_id}', 'ImageController@showImage');
 Route::get('holdings-thumb/{user_id}/{image_id}', 'ImageController@showThumb');
 
 Route::group(['middleware' => 'auth'], function() {
-       Route::get('logout', 'AuthController@logout');
-   });
+   Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+});
 
 Route::group(['middleware' => 'guest'], function () {
 
     // New User Registration
-    Route::get('signup', 'SignupController@signupForm');
-    Route::post('signup', 'SignupController@registerUser');
+    Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+    Route::post('register', 'Auth\RegisterController@register');
 
     // Authentication
-    Route::get('login', 'AuthController@loginForm');
-    Route::post('login','AuthController@login');
+    Route::get('login', 'Auth\LoginController@showLoginForm');
+    Route::post('login', 'Auth\LoginController@login');
+
+    // Forgotten Password Routes
+    Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+    Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+    Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+    Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 });
 
 // Require Authentication for Holdings
