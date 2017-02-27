@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @push('styles')
-<link href="/slim/slim.min.css" rel="stylesheet" type="text/css">
+<link href="/vendor/slim/slim.min.css" rel="stylesheet" type="text/css">
 <style>
     .file-drop-area {
         height: 180px;
@@ -57,7 +57,7 @@
 
 
 @push('scripts')
-<script src="/slim/slim.kickstart.js"></script>
+<script src="/vendor/slim/slim.kickstart.js"></script>
 <script type="text/javascript">
     // 1. Handling the various events
     // - get references to different elements we need

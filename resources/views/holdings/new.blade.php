@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@push('styles')
+<link href="/vendor/selectize/css/selectize.css" rel="stylesheet" type="text/css">
+@endpush
+
 @section('main-content')
 <div class="container">
     <div class="columns">
@@ -34,9 +38,7 @@
                     <div class="columns">
                         <div class="column is-5">
                             <label class="label">Metal Name</label>
-                            <p class="control">
-                                <input name="name" class="input is-success" type="text" placeholder="American Eagle" required autofocus />
-                            </p>
+                            <select id="holding" name="name" class="contacts" placeholder="Select a piece or enter a new one..." required autofocus></select>
                         </div>
                         <div class="column is-3">
                             <label class="label">Mint</label>
@@ -55,14 +57,14 @@
                         <div class="column is-4">
                             <label class="label">Weight</label>
                             <p class="control">
-                                <input name="weight" class="input is-success" type="text" placeholder="1" />
+                                <input id="weight" name="weight" class="input is-success" type="text" placeholder="1" />
                             </p>
                         </div>
                         <div class="column is-3 is-fullwidth">
                             <label class="label">Unit</label>
                             <p class="control">
                                 <span class="select is-fullwidth">
-                                    {!! Form::select('weight_unit', ['ounces' => 'Ounces', 'grams' => 'Grams'], null, ['class' => 'is-fullwidth']) !!}
+                                    {!! Form::select('weight_unit', ['ounces' => 'Ounces', 'grams' => 'Grams'], null, ['id' => 'weight_unit', 'class' => 'is-fullwidth']) !!}
                                 </span>
                             </p>
                         </div>
@@ -91,7 +93,7 @@
                             <label class="label">Finess</label>
                             <p class="control">
                                 <span class="select is-fullwidth">
-                                    {!! Form::select('finess', [999 => '.999 Fine Silver', 980 => '.980 Mexico ca. 1930-45',
+                                    {!! Form::select('finess', [9999 => '.9999 Fine', 999 => '.999 Fine Silver', 980 => '.980 Mexico ca. 1930-45',
                                                             958 => '.958 Britannia', 950 => '.950 French 1st Standard',
                                                             925 => '.925 Seterling Silver', 900 => '90% Silver (US Coins 1792-1964)',
                                                             400 => '40% Silver'], null, ['class' => 'form-control']) !!}
@@ -138,3 +140,28 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script src="/vendor/selectize/js/standalone/selectize.min.js"></script>
+<script>
+$(function() {
+    var pieces = {!! $pieces !!};
+    $('#holding').selectize({
+        persist: false,
+        maxItems: 1,
+        valueField: 'id',
+        labelField: 'name',
+        searchField: ['name'],
+        selectOnTab: true,
+        options: pieces,
+        create: true,
+        onChange: function(piece_id) {
+            var piece = $.grep(pieces, function(e){ return e.id == piece_id; }).shift();
+            $('#weight').val(piece.weight);
+            $('#weight_unit option[value="'+ piece.weight_unit +'"]').attr('selected', true);
+            console.log(piece);
+        }
+    });
+});
+</script>
+@endpush

@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @push('styles')
-<link rel="stylesheet" href="/venobox/venobox.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/vendor/venobox/venobox.css" type="text/css" media="screen" />
 @endpush
 
 @section('main-content')
@@ -84,7 +84,7 @@
 @endsection
 
 @push('scripts')
-<script type="text/javascript" src="/venobox/venobox.js"></script>
+<script type="text/javascript" src="/vendor/venobox/venobox.js"></script>
 <script>
 	$(document).ready(function() {
 		/* default settings */

@@ -51,6 +51,11 @@ Route::group(['prefix' => 'holdings', 'middleware' => 'auth'], function () {
 
 });
 
+Route::group(['prefix' => 'pieces', 'middleware' => 'auth'], function () {
+    Route::get('/', 'PieceController@all')->name('pieces.ajax');
+});
+
+
 Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function() {
     Route::get('/', 'ProfileController@showEditProfilePage');
 });

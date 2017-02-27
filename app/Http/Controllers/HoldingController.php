@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 use App\Holding;
 use App\User;
+use App\Piece;
 
 class HoldingController extends Controller
 {
@@ -35,7 +36,8 @@ class HoldingController extends Controller
 
     public function showNewForm()
     {
-        return view('holdings.new');
+        $pieces = Piece::all();
+        return view('holdings.new', compact('pieces'));
     }
 
     public function showEditForm($id)
