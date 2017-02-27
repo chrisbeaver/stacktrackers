@@ -38,18 +38,24 @@
                     <div class="columns">
                         <div class="column is-5">
                             <label class="label">Metal Name</label>
-                            <select id="holding" name="name" class="contacts" placeholder="Select a piece or enter a new one..." required autofocus></select>
+                            <select id="piece" class="contacts" placeholder="Select a piece or enter a new one..." required autofocus></select>
+                            <input id="holding" type="hidden" name="name" />
                         </div>
                         <div class="column is-3">
                             <label class="label">Mint</label>
                             <p class="control">
-                                <input name="mint" class="input is-success" type="text" placeholder="US Government" required />
+                                <input id="mint" name="mint" class="input" type="text" placeholder="US Mint" />
                             </p>
                         </div>
-                        <div class="column is-2">
-                        <label class="label">Year</label>
+                        <div class="column is-3">
+                            <label class="label">Finess</label>
                             <p class="control">
-                                <input name="year" class="input is-success" type="text" placeholder="{{ date('Y') }}" />
+                                <span class="select is-fullwidth">
+                                    {!! Form::select('finess', [9999 => '.9999 Fine', 999 => '.999 Fine Silver', 980 => '.980 Mexico ca. 1930-45',
+                                                            958 => '.958 Britannia', 950 => '.950 French 1st Standard',
+                                                            925 => '.925 Seterling Silver', 900 => '90% Silver (US Coins 1792-1964)',
+                                                            400 => '40% Silver'], null, ['class' => 'form-control', 'id' => "finess"]) !!}
+                                </span>
                             </p>
                         </div>
                     </div>
@@ -57,7 +63,7 @@
                         <div class="column is-4">
                             <label class="label">Weight</label>
                             <p class="control">
-                                <input id="weight" name="weight" class="input is-success" type="text" placeholder="1" />
+                                <input id="weight" name="weight" class="input" type="text" placeholder="1" />
                             </p>
                         </div>
                         <div class="column is-3 is-fullwidth">
@@ -86,18 +92,13 @@
                         <div class="column is-3">
                             <label class="label">Quantity</label>
                             <p class="control">
-                                <input name="quantity" class="input is-success" type="text" placeholder="1" />
+                                <input id="quantity" name="quantity" class="input" type="text" placeholder="1" />
                             </p>
                         </div>
-                        <div class="column is-4">
-                            <label class="label">Finess</label>
+                        <div class="column is-2">
+                        <label class="label">Year</label>
                             <p class="control">
-                                <span class="select is-fullwidth">
-                                    {!! Form::select('finess', [9999 => '.9999 Fine', 999 => '.999 Fine Silver', 980 => '.980 Mexico ca. 1930-45',
-                                                            958 => '.958 Britannia', 950 => '.950 French 1st Standard',
-                                                            925 => '.925 Seterling Silver', 900 => '90% Silver (US Coins 1792-1964)',
-                                                            400 => '40% Silver'], null, ['class' => 'form-control']) !!}
-                                </span>
+                                <input name="year" class="input" type="text" placeholder="{{ date('Y') }}" />
                             </p>
                         </div>
                         <div class="column is-4">
@@ -118,7 +119,7 @@
                         <div class="column is-one-third">
                             <label class="label">Purchase Price</label>
                             <p class="control">
-                                <input name="purchase_price" class="input is-success" type="text" placeholder="100.00" />
+                                <input name="purchase_price" class="input" type="text" placeholder="100.00" />
                             </p>
                         </div>
                         <div class="column is-one-third">
@@ -129,7 +130,7 @@
                         </div>
                         <div class="column is-one-third">
                             <label class="label">Purchase Date</label>
-                            {!! Form::text('purchase_date', Carbon\Carbon::now()->format('m-d-Y'), ['class' => 'input is-success']) !!}
+                            {!! Form::text('purchase_date', Carbon\Carbon::now()->format('m-d-Y'), ['class' => 'input']) !!}
                         </div>
                     </div>
                     <button type="submit" class="button is-primary is-fullwidth">Add To Your Stack</button>
@@ -146,7 +147,7 @@
 <script>
 $(function() {
     var pieces = {!! $pieces !!};
-    $('#holding').selectize({
+    $('#piece').selectize({
         persist: false,
         maxItems: 1,
         valueField: 'id',
@@ -157,9 +158,12 @@ $(function() {
         create: true,
         onChange: function(piece_id) {
             var piece = $.grep(pieces, function(e){ return e.id == piece_id; }).shift();
+            $('#holding').val(piece.name);
             $('#weight').val(piece.weight);
+            $('#mint').val(piece.mint.name);
             $('#weight_unit option[value="'+ piece.weight_unit +'"]').attr('selected', true);
-            console.log(piece);
+            $('#finess option[value="'+ piece.finess +'"]').attr('selected', true);
+            $('#quantity').focus();
         }
     });
 });

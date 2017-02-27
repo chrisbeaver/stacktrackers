@@ -9,6 +9,6 @@ class PieceController extends Controller
 {
     public function all(Request $request)
     {
-       return Piece::all();
+       return Piece::with('mint')->get();
     }
 }

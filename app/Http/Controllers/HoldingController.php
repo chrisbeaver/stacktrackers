@@ -36,7 +36,7 @@ class HoldingController extends Controller
 
     public function showNewForm()
     {
-        $pieces = Piece::all();
+        $pieces = Piece::with('mint')->get();
         return view('holdings.new', compact('pieces'));
     }
 
@@ -54,7 +54,7 @@ class HoldingController extends Controller
         $holding = Holding::create(['name' => $request->name, 'weight' => $request->weight,
             'weight_unit' => $request->weight_unit, 'quantity' => $request->quantity,
             'finess' => $request->finess, 'purchase_price' => $request->purchase_price * 100,
-            'purchase_date' => $date, 'user_id' => $request->user_id,
+            'purchase_date' => $date, 'user_id' => $request->user_id, 'mint' => $request->mint,
             'purchase_currency' => $request->purchase_currency]);
         // Store holding in session to attach images to it.
         session()->flash('active_holding', $holding->id);

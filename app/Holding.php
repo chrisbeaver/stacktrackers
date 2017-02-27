@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Holding extends Model
 {
-    protected $fillable = ['piece_id', 'user_id', 'mint_id', 'primary_img_id', 'name', 'weight',
+    protected $fillable = ['piece_id', 'user_id', 'mint', 'primary_img_id', 'name', 'weight',
                            'weight_unit', 'finess', 'purchase_price', 'quantity', 'year',
                            'purchase_date', 'purchase_currency', 'visibility'];
 

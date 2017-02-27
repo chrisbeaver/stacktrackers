@@ -15,6 +15,7 @@ class CreatePiecesTable extends Migration
     {
         Schema::create('pieces', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('mint_id')->default(1);
             $table->string('name', 60);
             $table->float('weight', 6,4);           // single unit weight
             $table->enum('weight_unit', ['ounces', 'grams']);
