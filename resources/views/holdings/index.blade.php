@@ -57,7 +57,7 @@
             <div class="media-content">
                 <div class="content">
                     <p>
-                        <strong><a href="{{ action('HoldingController@showHolding', $holding->id) }}">{{ $holding->name }}</a></strong> {{ $holding->quantity }}<small> pieces</small> {{ $holding->weight }}<small> {{ $holding->weight_unit == "ounces" ? "oz" : "g"}}/piece</small>
+                        <strong><a href="{{ action('HoldingController@showHolding', $holding->id) }}">{{ $holding->name }}</a></strong> {{ $holding->quantity }}<small> pieces</small> {{ $holding->weight }}<small>{{ $holding->weight_unit == "ounces" ? "oz" : "g"}}/piece</small>
                         <br>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
                     </p>
