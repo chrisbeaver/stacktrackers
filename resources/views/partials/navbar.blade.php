@@ -74,7 +74,7 @@
                         {{ csrf_field() }}
                     </form>
                 @else
-                    <a class="button is-primary" href="{{ action('Auth\LoginController@showLoginForm') }}">
+                    <a class="button is-info" href="{{ action('Auth\LoginController@showLoginForm') }}">
                         <span>Login</span>
                         <span class="icon">
                             <i class="fa fa-sign-in"></i>

@@ -6255,12 +6255,12 @@ body > .container {
 }
 
 a {
-  color: #0cb59b;
+  color: #619AF4;
   text-decoration: none;
 }
 
 a:hover {
-  color: #09f7cf;
+  color: #00064F;
 }
 
 .nav-item img {
@@ -6273,8 +6273,25 @@ a:hover {
 
 .footer {
   background-color: #619AF4;
+  color: #ffffff;
   padding-bottom: 40px;
   border-top: 1px solid #fff;
+}
+
+.footer strong {
+  color: #ffffff;
+}
+
+.footer .content {
+  color: #ffffff;
+}
+
+.footer a {
+  color: #ffffff;
+}
+
+.footer a:visited {
+  color: #ffff00;
 }
 
 @media screen and (max-width: 768px) {

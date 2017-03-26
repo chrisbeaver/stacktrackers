@@ -23,7 +23,7 @@
                         <a href="{{ route('password.request') }}">Forgot your password?</a>
                     </p>
                     <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                    <button type="submit" class="button is-info is-fullwidth">Login</button>
+                    <button type="submit" class="button is-primary is-fullwidth">Login</button>
 
                 {!! Form::close() !!}
             </div>
