@@ -2,7 +2,7 @@
     <div class="container">
         <div class="nav-left">
             <a class="nav-item is-brand" href="#">
-              <img src="/images/navbar_logo.png" alt="Bulma logo">
+              <img src="/images/logo.svg" alt="Stacktrackers logo">
             </a>
         </div>
 
