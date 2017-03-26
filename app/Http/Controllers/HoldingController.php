@@ -16,7 +16,9 @@ class HoldingController extends Controller
     {
         $holdings = auth()->user()->holdings;
         $total_pieces = $holdings->sum('quantity');
-        $total_weight = $holdings->sum('weight');
+        $total_weight = $holdings->sum(function($holding) {
+            return $holding->quantity * $holding->weight;
+        });
         $tags = ['ASE', 'Maple Leaf', 'Panda'];
         // return dd($holdings);
         return view('holdings.index', compact('holdings', 'total_pieces', 'total_weight', 'tags'));
