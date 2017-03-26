@@ -6271,6 +6271,14 @@ a:hover {
   margin-top: 40px;
 }
 
+.content a:not(.button) {
+  color: #619AF4;
+}
+
+.content a:not(.button):visited {
+  color: #00064F;
+}
+
 .footer {
   background-color: #619AF4;
   color: #ffffff;
@@ -6286,11 +6294,11 @@ a:hover {
   color: #ffffff;
 }
 
-.footer a {
+.footer .content a {
   color: #ffffff;
 }
 
-.footer a:visited {
+.footer .content a:visited {
   color: #ffff00;
 }
 

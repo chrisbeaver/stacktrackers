@@ -21,6 +21,15 @@ a {
     margin-top: 40px;
 }
 
+.content {
+    a:not(.button) {
+        color: $logo-lightblue;
+    }
+    a:not(.button):visited {
+        color: $logo-darkblue;
+    }
+}
+
 // Footer
 .footer {
     background-color: $logo-lightblue;
@@ -33,12 +42,12 @@ a {
     }
     .content {
         color: #ffffff;
-    }
-    a {
-        color: #ffffff;
-    }
-    a:visited {
-        color: #ffff00;
+        a {
+            color: #ffffff;
+        }
+        a:visited {
+            color: #ffff00;
+        }
     }
 }
 
