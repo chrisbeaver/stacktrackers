@@ -60,6 +60,10 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function() {
     Route::get('/', 'ProfileController@showEditProfilePage');
 });
 
+Route::group(['prefix' => 'account', 'middleware' => 'auth'], function() {
+    Route::get('/', 'AccountController@showAccountDetails');
+    Route::put('/', 'AccountController@update');
+});
 // Home Controller is for Authenticated Users
 Route::group(['prefix' => 'home', 'middleware' => 'auth'], function() {
     Route::get('/', 'HomeController@showHomePage');

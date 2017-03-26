@@ -58,7 +58,7 @@
                                 <li class="menu-item"><span class="icon"><i class="fa fa-home"></i></span><a href="{{ action('HomeController@showHomePage' )}}">Home</a></li>
                                 <li class="menu-item"><span class="icon"><i class="fa fa-database"></i></span><a href="{{ action('HoldingController@showMyHoldings' )}}">My Holdings</a></li>
                                 <li class="menu-item"><span class="icon"><i class="fa fa-user"></i></span><a href="{{ action('ProfileController@showEditProfilePage') }}">Profile</a></li>
-                                <li class="menu-item"><span class="icon"><i class="fa fa-cog"></i></span><a href="/something-else">Account Settings</a></li>
+                                <li class="menu-item"><span class="icon"><i class="fa fa-cog"></i></span><a href="{{ action('AccountController@showAccountDetails')}}">Account Settings</a></li>
                                 <li class="spacer"></li>
                                 <li class="menu-item"><span class="icon"><i class="fa fa-sign-out"></i></span>
                                     <a href="{{ route('logout') }}"
