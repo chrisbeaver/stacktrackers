@@ -13,26 +13,31 @@
         </span>
 
         <div id="nav-menu" class="nav-right nav-menu">
-            <a class="nav-item is-tab" href="#">
+            <a class="nav-item is-tab" href="{{ action('HomeController@showHomePage') }}">
                 Home
             </a>
-            <a class="nav-item is-tab" href="#">
+            <a class="nav-item is-tab" href="{{ action('BrowseController@index') }}">
                 Browse Stacks
             </a>
-            <a class="nav-item is-tab" href="#">
+            <a class="nav-item is-tab" href="http://blog.stacktrackers.com">
                 Blog
             </a>
             @if(auth()->guest())
-                <a class="nav-item is-tab is-hidden-tablet" href="{{ action('AuthController@loginForm') }}">
+                <a class="nav-item is-tab is-hidden-tablet" href="{{ action('Auth\LoginController@showLoginForm') }}">
                     Login
                 </a>
-                <a class="nav-item is-tab is-hidden-tablet" href="{{ action('SignupController@signupForm') }}">
+                <a class="nav-item is-tab is-hidden-tablet" href="{{ action('Auth\RegisterController@showRegistrationForm') }}">
                     Signup
                 </a>
             @else
-                <a class="nav-item is-tab is-hidden-tablet" href="{{ action('AuthController@logout') }}">
+                <a class="nav-item is-tab is-hidden-tablet" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
                     Logout
                 </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
             @endif
             <span class="nav-item is-tab is-hidden-mobile menu">
                 @if(auth()->check())
@@ -52,15 +57,24 @@
                             <ul class="dropdown">
                                 <li class="menu-item"><span class="icon"><i class="fa fa-home"></i></span><a href="{{ action('HomeController@showHomePage' )}}">Home</a></li>
                                 <li class="menu-item"><span class="icon"><i class="fa fa-database"></i></span><a href="{{ action('HoldingController@showMyHoldings' )}}">My Holdings</a></li>
-                                <li class="menu-item"><span class="icon"><i class="fa fa-user"></i></span><a href="/profile">Profile</a></li>
+                                <li class="menu-item"><span class="icon"><i class="fa fa-user"></i></span><a href="{{ action('ProfileController@showEditProfilePage') }}">Profile</a></li>
                                 <li class="menu-item"><span class="icon"><i class="fa fa-cog"></i></span><a href="/something-else">Account Settings</a></li>
                                 <li class="spacer"></li>
-                                <li class="menu-item"><span class="icon"><i class="fa fa-sign-out"></i></span><a href="/logout">Logout</a></li>
+                                <li class="menu-item"><span class="icon"><i class="fa fa-sign-out"></i></span>
+                                    <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
                 @else
-                    <a class="button is-primary" href="{{ action('AuthController@loginForm') }}">
+                    <a class="button is-primary" href="{{ action('Auth\LoginController@showLoginForm') }}">
                         <span>Login</span>
                         <span class="icon">
                             <i class="fa fa-sign-in"></i>

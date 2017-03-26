@@ -21,12 +21,12 @@ class ImageController extends Controller
 
     public function showImage($user_id, $image_id)
     {
-        return HoldingImage::find($image_id)->link();
+        return response()->file(HoldingImage::find($image_id)->link);
     }
 
     public function showThumb($user_id, $image_id)
     {
-        return HoldingImage::find($image_id)->thumbnail();
+        return response()->file(HoldingImage::find($image_id)->thumbnail);
     }
 
     public function saveImage(Request $request)
@@ -79,5 +79,7 @@ class ImageController extends Controller
 
             HoldingImage::create(['holding_id' => $holding->id, 'file_hash' => $fileHash]);
         }
+
+        return redirect()->action('HoldingController@showMyHoldings');
     }
 }

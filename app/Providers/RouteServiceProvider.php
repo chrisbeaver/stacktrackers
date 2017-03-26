@@ -26,6 +26,11 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+
+        // Bind a User Model by username
+        Route::bind('user', function ($value) {
+            return \App\User::where('username', $value)->first();
+        });
     }
 
     /**

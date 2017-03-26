@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Holding extends Model
 {
-    protected $fillable = ['piece_id', 'user_id', 'primary_img_id', 'name', 'weight', 'weight_unit', 'finess',
-                           'purchase_price', 'quantity', 'year', 'purchase_date',
-                           'purchase_currency', 'visibility'];
+    protected $fillable = ['piece_id', 'user_id', 'mint', 'primary_img_id', 'name', 'weight',
+                           'weight_unit', 'finess', 'purchase_price', 'quantity', 'year',
+                           'purchase_date', 'purchase_currency', 'visibility'];
 
     public function user()
     {
@@ -30,9 +30,14 @@ class Holding extends Model
         return $this->hasMany('App\HoldingImage');
     }
 
-    public function scopePublicPieces($query)
+    public function mint()
     {
-        return $query->where('visibility','public');
+        return $this->belongsTo('App\Mint');
+    }
+
+    public function scopePublicHoldings($query)
+    {
+        return $query->where('visibility', 'public');
     }
 
 }

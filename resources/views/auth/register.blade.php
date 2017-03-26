@@ -11,14 +11,14 @@
                     </p>
                 </header>
                 <div class="card-content">
-                {!! Form::open(['url' => action('SignupController@registerUser')]) !!}
+                {!! Form::open(['url' => action('Auth\RegisterController@register')]) !!}
                     <label class="label">Email</label>
                     <p class="control">
-                        <input name="email" class="input" type="email" placeholder="name@email.com" required autofocus />
+                        <input name="email" class="input" type="email" value="{{ old('email') }}" placeholder="name@email.com" required autofocus />
                     </p>
                     <label class="label">Username</label>
                     <p class="control">
-                        <input name="username" class="input" type="text" placeholder="Username" required />
+                        <input name="username" class="input" type="text" value="{{ old('username') }}" placeholder="Username" required />
                     </p>
                     <label class="label">Password</label>
                     <p class="control">
@@ -28,8 +28,8 @@
                     <p class="control">
                         <input name="password_confirmation" class="input" type="password" placeholder="Password Confirmation" required />
                     </p>
-                    
-                    <button type="submit" class="button is-primary is-fullwidth">Create Account</button>      
+
+                    <button type="submit" class="button is-primary is-fullwidth">Create Account</button>
                 {!! Form::close() !!}
                 </div>
             </div>

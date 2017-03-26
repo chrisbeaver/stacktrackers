@@ -21,15 +21,17 @@ class CreateHoldingsTable extends Migration
             $table->string('name', 60);
             $table->float('weight', 6,4);           // single unit weight
             $table->enum('weight_unit', ['ounces', 'grams']);
+            $table->string('mint', 40);
             $table->integer('finess');              // .999 for fine etc...
             $table->integer('purchase_price');      // purchase price in USD
             $table->integer('quantity');            // quantity purchased
             $table->integer('year')->nullable();    // if applicable (coin)
             $table->date('purchase_date');          // date of purchase
             $table->enum('purchase_currency', ['usd'])->default('usd');
+            $table->boolean('anonymous')->default(false);
             $table->enum('visibility', ['private', 'public'])->default('public');
             $table->timestamps();
-        
+
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
