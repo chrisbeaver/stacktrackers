@@ -6302,6 +6302,10 @@ a:hover {
   color: #ffff00;
 }
 
+.field:not(:last-child) {
+  margin-bottom: 0.75rem;
+}
+
 @media screen and (max-width: 768px) {
   .w-100-mobile {
     width: 100%;

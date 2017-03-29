@@ -21,25 +21,31 @@
                 </div>
             </div>
         </div>
-        <div class="column">
-            <div class="card is-fullwidth">
-                <div class="card-content">
-                    {{ Form::open(['action' => 'AccountController@update', 'method' => 'PUT']) }}
-						<div class="field">
-						    <label class="label">Username</label>
-						  	<p class="control">
-						  		{{ Form::text('username', auth()->user()->username, ['class' => 'input is-info']) }}
-						  	</p>
-						</div>
-						<div class="field">
-						    <label class="label">Email</label>
-						  	<p class="control">
-						  		{{ Form::text('email', auth()->user()->email, ['class' => 'input is-info']) }}
-						  	</p>
-						</div>
-					{{ Form::close() }}
+        <div class="column is-6">
+            {{ Form::open(['action' => 'AccountController@update', 'method' => 'PUT']) }}
+				<div class="field">
+				    <label class="label">Username</label>
+				  	<p class="control">
+				  		{{ Form::text('username', auth()->user()->username, ['class' => 'input is-info']) }}
+				  	</p>
+				</div>
+				<div class="field">
+				    <label class="label">Email</label>
+				  	<p class="control">
+				  		{{ Form::text('email', auth()->user()->email, ['class' => 'input is-info']) }}
+				  	</p>
+				</div>
+                <div class="field">
+                    <p class="control">
+                        <a class="button is-outlined is-info">
+                            Back
+                        </a>
+                        <button class="button is-primary">
+                            Update
+                        </button>
+                    </p>
                 </div>
-            </div>
+			{{ Form::close() }}
         </div>
     </div>
 </div>

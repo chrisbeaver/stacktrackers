@@ -56,9 +56,9 @@ Route::group(['prefix' => 'pieces', 'middleware' => 'auth'], function () {
 });
 
 
-Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function() {
-    Route::get('/', 'ProfileController@showEditProfilePage');
-});
+// Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function() {
+//     Route::get('/', 'ProfileController@showEditProfilePage');
+// });
 
 Route::group(['prefix' => 'account', 'middleware' => 'auth'], function() {
     Route::get('/', 'AccountController@showAccountDetails');
