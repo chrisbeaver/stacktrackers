@@ -36,6 +36,18 @@
 				  	</p>
 				</div>
                 <div class="field">
+                    <label class="label">Currency</label>
+                    <p class="control">
+                        {{ Form::text('currency', auth()->user()->currency, ['class' => 'input is-info']) }}
+                    </p>
+                </div>
+                <div class="field">
+                    <label class="label">Default Weight Unit</label>
+                    <p class="control">
+                        {{ Form::text('weight_unit', auth()->user()->weight_unit, ['class' => 'input is-info']) }}
+                    </p>
+                </div>
+                <div class="field">
                     <p class="control">
                         <a class="button is-outlined is-info">
                             Back

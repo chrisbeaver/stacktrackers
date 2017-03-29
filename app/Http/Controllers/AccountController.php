@@ -13,6 +13,8 @@ class AccountController extends Controller
 
     public function update(Request $request)
     {
-    	
+    	$user = auth()->user();
+    	$user->update(['currency' => $request->currency, 'weight_unit' => $request->weight_unit]);
+    	return redirect()->back();
     }
 }

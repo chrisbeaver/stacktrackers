@@ -12,7 +12,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        User::create(['username' => 'chris', 'email' => 'chris@chrisbeaver.net',
-        			  'password' => 'password']);
+        User::create(['username' => 'chris', 'email' => 'chris@chrisbeaver.net', 'password' => 'password', 'currency' => 'USD', 'weight_unit' => 'ounce']);
     }
 }
