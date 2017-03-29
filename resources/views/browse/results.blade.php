@@ -3,19 +3,6 @@
 @section('main-content')		
 <div class="content"  style="margin-top: 2em;">
     <div class="container">
-        <nav class="level">
-            <div class="level-item has-text-centered">
-                <p class="heading">Filters</p>
-                <div class="block">
-                    @foreach($tags as $tag)
-                        <span class="tag is-primary is-medium">
-                            {{ $tag }}
-                            <button class="delete is-small"></button>
-                        </span>
-                    @endforeach
-                </div>
-            </div>
-        </nav>
         @foreach($holdings as $holding)
         <article class="media">
             <figure class="media-left">

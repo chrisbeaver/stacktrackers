@@ -19,21 +19,21 @@
             <h1 class="title">By Name</h1>
             <p>
                 @foreach($pieces as $piece)
-                    <a href="">{{ $piece->name }}</a>@if(! $loop->last), @endif
+                    <a href="{{ action('BrowseController@filter', ['type' => 'name', 'id' => $piece->id]) }}">{{ $piece->name }}</a>@if(! $loop->last), @endif
                 @endforeach
             </p>
             <hr />
             <h1 class="title">By Mint</h1>
             <p>
                 @foreach($mints as $mint)
-                    <a href="">{{ $mint->name }}</a>@if(! $loop->last), @endif
+                    <a href="{{ action('BrowseController@filter', ['type' => 'mint', 'id' => $mint->id]) }}">{{ $mint->name }}</a>@if(! $loop->last), @endif
                 @endforeach
             </p>
             <hr />
             <h1 class="title">By Tag</h1>
             <p>
                 @foreach($tags as $tag)
-                    <a href="">{{ $tag->tag }}</a>@if(! $loop->last), @endif
+                    <a href="{{ action('BrowseController@filter', ['type' => 'tag', 'id' => $tag->id]) }}">{{ $tag->tag }}</a>@if(! $loop->last), @endif
                 @endforeach
             </p>
         </div>

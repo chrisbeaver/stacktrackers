@@ -8,6 +8,7 @@ Route::get('test', function() { return view('test'); });
 // Public Holding Routes
 Route::group(['prefix' => 'browse'], function() {
     Route::get('/', 'BrowseController@index');
+    Route::get('filter', 'BrowseController@filter');
 });
 
 Route::get('holdings/view/{id}', 'HoldingController@showHolding');

@@ -24,4 +24,26 @@ class BrowseController extends Controller
     	$tags = ['ASE', 'Maple Leaf', 'Panda'];
         return view('browse.results', compact('holdings', 'tags'));
     }
+
+    public function filter(Request $request)
+    {
+    	$filterType = '__filterBy'.ucfirst($request->type);
+    	$holdings = $this->$filterType($request->id)->paginate(1);
+    	return view('browse.results', compact('holdings'));
+    }
+
+    private function __filterByMint($id)
+    {
+    	return Holding::where(['mint' => Mint::find($id)->name]);
+    }
+    
+    private function __filterByName()
+    {
+    	
+    }
+
+    private function __filterByTag()
+    {
+
+    }
 }

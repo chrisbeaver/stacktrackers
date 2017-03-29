@@ -1,8 +1,8 @@
 <nav class="nav has-shadow">
     <div class="container">
         <div class="nav-left">
-            <a class="nav-item is-brand" href="#">
-              <img src="/images/logo.svg" alt="Stacktrackers logo">
+            <a class="nav-item is-brand" href="#" style="width: 90%;">
+              <img class="image" src="/images/logo.svg" alt="Stacktrackers logo" />
             </a>
         </div>
 
