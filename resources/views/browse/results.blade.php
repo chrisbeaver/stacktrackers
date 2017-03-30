@@ -3,6 +3,7 @@
 @section('main-content')		
 <div class="content"  style="margin-top: 2em;">
     <div class="container">
+        <h1 class="title is-1">Browse by: {{ $term }}</h1>
         @foreach($holdings as $holding)
         <article class="media">
             <figure class="media-left">
@@ -37,7 +38,7 @@
             </div>
         </article>
         @endforeach
-        {{ $holdings->render() }}
+        {{ $holdings->appends(['type' => $type, 'id' => $id])->render() }}
     </div>
 </div>
 @endsection

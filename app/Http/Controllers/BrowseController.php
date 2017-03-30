@@ -27,9 +27,17 @@ class BrowseController extends Controller
 
     public function filter(Request $request)
     {
-    	$filterType = '__filterBy'.ucfirst($request->type);
-    	$holdings = $this->$filterType($request->id)->paginate(1);
-    	return view('browse.results', compact('holdings'));
+    	$type = $request->type;
+    	$id = $request->id;
+    	$filterType = '__filterBy'.ucfirst($type);
+    	$holdings = $this->$filterType($id)->paginate(1);
+    	$term = 'Terms';
+    	return view('browse.results', compact('holdings', 'term', 'type', 'id'));
+    }
+
+    public function results()
+    {
+
     }
 
     private function __filterByMint($id)
