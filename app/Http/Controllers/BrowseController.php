@@ -12,10 +12,13 @@ class BrowseController extends Controller
 {
     public function index()
     {
+    	$ids = \App\Holding::groupBy('mint_id')->select('mint_id', \DB::raw('count(*) as total'))
+                                               ->orderBy('total')
+                                               ->get()->pluck('mint_id')->all();
     	$pieces = Piece::all();
-    	$mints = Mint::all();
-    	// App\Holding::groupBy('mint')->select('mint', DB::raw('count(*) as total'))->get();
-    	$tags = Tag::all();
+        $mints = Mint::whereIn('id', array_values($ids))->get();
+        // return dd($ids);
+        $tags = Tag::all();
     	return view('browse.index', compact('pieces', 'mints', 'tags'));
     }
 
