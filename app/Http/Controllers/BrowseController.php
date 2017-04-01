@@ -14,6 +14,7 @@ class BrowseController extends Controller
     {
     	$pieces = Piece::all();
     	$mints = Mint::all();
+    	// App\Holding::groupBy('mint')->select('mint', DB::raw('count(*) as total'))->get();
     	$tags = Tag::all();
     	return view('browse.index', compact('pieces', 'mints', 'tags'));
     }
@@ -42,6 +43,7 @@ class BrowseController extends Controller
 
     private function __filterByMint($id)
     {
+    	// return Holding::groupBy('mint')->select('mint', DB::raw('count(*) as total'));
     	return Holding::where(['mint' => Mint::find($id)->name]);
     }
     

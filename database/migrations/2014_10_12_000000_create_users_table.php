@@ -18,8 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('currency');
-            $table->string('weight_unit');
+            $table->string('currency')->default('USD');
+            $table->string('weight_unit')->default('ounce');
             $table->rememberToken();
             $table->timestamps();
         });
