@@ -26,35 +26,31 @@
 				<div class="field">
 				    <label class="label">Username</label>
 				  	<p class="control">
-				  		{{ Form::text('username', auth()->user()->username, ['class' => 'input is-info']) }}
+				  		{{ Form::text('username', auth()->user()->username, ['class' => 'input']) }}
 				  	</p>
 				</div>
 				<div class="field">
 				    <label class="label">Email</label>
 				  	<p class="control">
-				  		{{ Form::text('email', auth()->user()->email, ['class' => 'input is-info']) }}
+				  		{{ Form::text('email', auth()->user()->email, ['class' => 'input']) }}
 				  	</p>
 				</div>
                 <div class="field">
                     <label class="label">Currency</label>
                     <p class="control">
-                        {{ Form::text('currency', auth()->user()->currency, ['class' => 'input is-info']) }}
+                        {{ Form::text('currency', auth()->user()->currency, ['class' => 'input']) }}
                     </p>
                 </div>
                 <div class="field">
                     <label class="label">Default Weight Unit</label>
                     <p class="control">
-                        {{ Form::text('weight_unit', auth()->user()->weight_unit, ['class' => 'input is-info']) }}
+                        {{ Form::text('weight_unit', auth()->user()->weight_unit, ['class' => 'input']) }}
                     </p>
                 </div>
                 <div class="field">
-                    <p class="control">
-                        <a class="button is-outlined is-info">
-                            Back
-                        </a>
-                        <button class="button is-primary">
-                            Update
-                        </button>
+                    <p class="control is-pulled-right">
+                        <a class="button is-outlined is-info">Back</a>
+                        <button class="button is-primary">Update</button>
                     </p>
                 </div>
 			{{ Form::close() }}

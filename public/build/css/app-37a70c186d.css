@@ -6279,6 +6279,16 @@ a:hover {
   color: #00064F;
 }
 
+.input:focus, .input.is-focused, .input:active,
+.input.is-active, .textarea:focus, .textarea.is-focused,
+.textarea:active, .textarea.is-active {
+  border-color: #619AF4;
+}
+
+.input:hover, .textarea:hover {
+  border-color: #00064F;
+}
+
 .footer {
   background-color: #619AF4;
   color: #ffffff;

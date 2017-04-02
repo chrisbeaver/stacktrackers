@@ -30,6 +30,16 @@ a {
     }
 }
 
+// Form Input Highlighter
+.input:focus, .input.is-focused, .input:active, 
+.input.is-active, .textarea:focus, .textarea.is-focused, 
+.textarea:active, .textarea.is-active {
+    border-color: $logo-lightblue;
+}
+.input:hover, .textarea:hover {
+    border-color: $logo-darkblue;
+}
+
 // Footer
 .footer {
     background-color: $logo-lightblue;
