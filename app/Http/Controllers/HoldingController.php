@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 use App\Holding;
 use App\User;
+use App\Mint;
 use App\Piece;
 
 class HoldingController extends Controller
@@ -16,7 +17,9 @@ class HoldingController extends Controller
     {
         $holdings = auth()->user()->holdings;
         $total_pieces = $holdings->sum('quantity');
-        $total_weight = $holdings->sum('weight');
+        $total_weight = $holdings->sum(function($holding) {
+            return $holding->quantity * $holding->weight;
+        });
         $tags = ['ASE', 'Maple Leaf', 'Panda'];
         // return dd($holdings);
         return view('holdings.index', compact('holdings', 'total_pieces', 'total_weight', 'tags'));
@@ -51,11 +54,13 @@ class HoldingController extends Controller
     public function store(HoldingRequest $request)
     {
         $date = Carbon::createFromFormat('m-d-Y', $request->purchase_date)->format('Y-m-d');
+        $mint = Mint::where(['name' => $request->mint])->first();
+        $mint_id = $mint ? $mint->id : null;
         $holding = Holding::create(['name' => $request->name, 'weight' => $request->weight,
             'weight_unit' => $request->weight_unit, 'quantity' => $request->quantity,
             'finess' => $request->finess, 'purchase_price' => $request->purchase_price * 100,
             'purchase_date' => $date, 'user_id' => $request->user_id, 'mint' => $request->mint,
-            'purchase_currency' => $request->purchase_currency]);
+            'mint_id' => $mint_id, 'purchase_currency' => $request->purchase_currency]);
         // Store holding in session to attach images to it.
         session()->flash('active_holding', $holding->id);
 

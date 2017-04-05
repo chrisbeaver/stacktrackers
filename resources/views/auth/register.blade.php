@@ -28,8 +28,12 @@
                     <p class="control">
                         <input name="password_confirmation" class="input" type="password" placeholder="Password Confirmation" required />
                     </p>
-
-                    <button type="submit" class="button is-primary is-fullwidth">Create Account</button>
+                    <div style="margin-bottom: 1em">
+                        Already have an account? <a href="{{ action('Auth\LoginController@showLoginForm') }}">Login</a> here.
+                    </div>
+                    <div>
+                        <button type="submit" class="button is-primary is-fullwidth">Create Account</button>
+                    </div>
                 {!! Form::close() !!}
                 </div>
             </div>

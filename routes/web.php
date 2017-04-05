@@ -6,7 +6,11 @@ Route::get('/', function () {
 });
 Route::get('test', function() { return view('test'); });
 // Public Holding Routes
-Route::get('browse', 'BrowseController@index');
+Route::group(['prefix' => 'browse'], function() {
+    Route::get('/', 'BrowseController@index');
+    Route::get('filter', 'BrowseController@filter');
+});
+
 Route::get('holdings/view/{id}', 'HoldingController@showHolding');
 Route::get('users/{user}/holdings', 'HoldingController@showUserHoldings');
 
@@ -56,10 +60,14 @@ Route::group(['prefix' => 'pieces', 'middleware' => 'auth'], function () {
 });
 
 
-Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function() {
-    Route::get('/', 'ProfileController@showEditProfilePage');
-});
+// Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function() {
+//     Route::get('/', 'ProfileController@showEditProfilePage');
+// });
 
+Route::group(['prefix' => 'account', 'middleware' => 'auth'], function() {
+    Route::get('/', 'AccountController@showAccountDetails');
+    Route::put('/', 'AccountController@update');
+});
 // Home Controller is for Authenticated Users
 Route::group(['prefix' => 'home', 'middleware' => 'auth'], function() {
     Route::get('/', 'HomeController@showHomePage');
