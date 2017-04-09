@@ -15,7 +15,7 @@
             <div class="level-item has-text-centered">
                 <div>
                     <p class="heading">Weight</p>
-                    <p class="title">{{ $total_weight }} ounces</p>
+                    <p class="title">{{ round($total_weight, 2) }} ounces</p>
                 </div>
             </div>
             <div class="level-item has-text-centered">

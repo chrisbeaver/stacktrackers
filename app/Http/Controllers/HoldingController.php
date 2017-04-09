@@ -17,8 +17,11 @@ class HoldingController extends Controller
     {
         $holdings = auth()->user()->holdings;
         $total_pieces = $holdings->sum('quantity');
+        // Returns in ounces
         $total_weight = $holdings->sum(function($holding) {
-            return $holding->quantity * $holding->weight;
+            return ($holding->weight_unit == "ounces") ?
+                     $holding->quantity * $holding->weight :
+                     ($holding->quantity * $holding->weight) * 0.035274;
         });
         $tags = ['ASE', 'Maple Leaf', 'Panda'];
         // return dd($holdings);
