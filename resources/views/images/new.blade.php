@@ -1,20 +1,18 @@
 @extends('layouts.main')
-
 @push('styles')
 <link href="/vendor/slim/slim.min.css" rel="stylesheet" type="text/css">
 <style>
     .file-drop-area {
-        height: 180px;
         display: block;
     }
 
    .file-drop-area label {
         display: block;
         padding: 2em;
-        background: #eee;
+        border: dashed;
         text-align: center;
         cursor: pointer;
-        margin-top: 30px;
+        margin-left: 4em;
     }
 
     .slim {
@@ -29,25 +27,36 @@
 </style>
 @endpush
 
-
 @section('main-content')
-
 {{-- Upload View --}}
 <div class="container">
     <div id="upload-view" class="add-view text-center hidden">
-        <h1>Upload photos from your {{ BrowserDetect::isDesktop() ? 'computer' : 'device' }}</h1>
-
+        <h1 class="title">Upload photos from your {{ BrowserDetect::isDesktop() ? 'computer' : 'device' }}</h1>
         <form id="upload-form" action="{{ action('ImageController@saveImage') }}" method='POST' accept-charset="UTF-8" enctype="multipart/form-data" role="form">
             {{ csrf_field() }}
             <input type="hidden" name="holding_id" value="{{ $holding->id }}" />
-            <div class="file-drop-area">
-                <label for="images">Drop your files here</label>
-                <input name="images[]" id="images" type="file" multiple>
+            <div class="columns">
+                <div class="column is-one-third">
+                    <p>You may choose up to four images of your piece. First add them to
+                    the drop area, and then you can crop or reposition the image.</p>
+                </div>
+                <div class="column">
+                    <div class="file-drop-area">
+                        <label for="images">Drop your files here</label>
+                        <input name="images[]" id="images" type="file" multiple />
+                    </div>
+                </div>
             </div>
-
-            <div class="upload-btns mart25">
-                <button id="upload-cancel-btn" class="btn btn-default btn-lg">Cancel</button>
-                <button id="upload-submit-btn" class="btn btn-success btn-lg hidden" data-onsubmit="Uploading... <i class='fa fa-spinner fa-spin'></i>">Upload Photos</button>
+            <div class="columns">
+                <div class="column">  
+                    <div id="pending">
+                      
+                    </div>
+                    <div class="upload-btns has-text-right">
+                        <a class="button is-info is-outlined" href="{{ action('HoldingController@showMyHoldings') }}">Skip</a>
+                        <button id="upload-submit-btn" class="button is-primary" data-onsubmit="Uploading... <i class='fa fa-spinner fa-spin'></i>">Upload Photos</button>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
@@ -145,9 +154,10 @@
 
       // create container element for cropper
       var cropper = document.createElement('div');
-
+      var pending = document.getElementById('pending');
       // insert this element after the file drop area
-      fileDropArea.parentNode.insertBefore(cropper, fileDropArea.nextSibling);
+      // fileDropArea.parentNode.insertBefore(cropper, fileDropArea.nextSibling);
+      pending.appendChild(cropper);
 
       // create a Slim Cropper
       Slim.create(cropper, {

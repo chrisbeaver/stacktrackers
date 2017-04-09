@@ -51,7 +51,7 @@
         <article class="media">
             <figure class="media-left">
                 <p class="image is-128x128">
-                    <img src="{{ action('ImageController@showThumb', ['user_id' => $holding->user_id, 'image_id' => $holding->images->first()->id]) }}">
+                    <img src="{{ action('ImageController@showThumb', ['user_id' => $holding->user_id, 'image_id' => $holding->primaryImageId]) }}">
                 </p>
              </figure>
             <div class="media-content">

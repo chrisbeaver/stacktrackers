@@ -6249,6 +6249,10 @@ html {
   background-color: #ffffff;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 body > .container {
   margin-top: 60px;
   margin-bottom: 40px;

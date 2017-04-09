@@ -40,4 +40,9 @@ class Holding extends Model
         return $query->where('visibility', 'public');
     }
 
+    public function getPrimaryImageIdAttribute()
+    {
+        return $this->images->first() ? $this->images->first() : 1;
+    }
+
 }

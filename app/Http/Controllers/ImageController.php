@@ -15,7 +15,7 @@ class ImageController extends Controller
 {
     public function addImagesForm()
     {
-        $holding = Holding::find(session()->get('active_holding'));
+        $holding = Holding::find(1); // Holding::find(session()->get('active_holding'));
         return view('images.new', compact('holding'));
     }
 

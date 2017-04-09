@@ -27,7 +27,7 @@ class BrowseController extends Controller
 
     public function showResults()
     {
-    	$holdings = Holding::orderBy('created_at')->paginate(1);
+    	$holdings = Holding::orderBy('created_at')->paginate(20);
     	$tags = ['ASE', 'Maple Leaf', 'Panda'];
         return view('browse.results', compact('holdings', 'tags'));
     }
@@ -37,7 +37,7 @@ class BrowseController extends Controller
     	$type = $request->type;
     	$id = $request->id;
     	$filterType = '__filterBy'.ucfirst($type);
-    	$holdings = $this->$filterType($id)->paginate(1);
+    	$holdings = $this->$filterType($id)->paginate(20);
     	$term = 'Terms';
     	return view('browse.results', compact('holdings', 'term', 'type', 'id'));
     }
